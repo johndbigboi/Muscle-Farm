@@ -1,0 +1,7 @@
+.vscode
+.py
+env.py
+venv
+.DS_Store
+.pyc
+__pycache__/
