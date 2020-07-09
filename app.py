@@ -14,11 +14,17 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-def hello():
-    return 'Hello World'
+@app.route('/get_recipe')
+def get_recipe():
+    return render_template('dashboard.html', recipes=mongo.db.recipes.find(), workouts=mongo.db.workouts.find())
 
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),
             port=int(os.environ.get('PORT', '5000')),
-            debug=False)
+            debug=True)
+    """
+    app.run(host=os.environ.get('IP', '127.0.0.1'),
+            port=int(os.environ.get('PORT', '8080')),
+            debug=True)
+    """
