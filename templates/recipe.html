@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Feature Recipes</h3>
+<div class="recipe">
+    <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#preWorkout" role="button" aria-expanded="false"
+            aria-controls="preWorkout">Pre Workout</a>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#postWorkout"
+            aria-expanded="false" aria-controls="postWorkout">Post Workout</button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse"
+            aria-expanded="false" aria-controls="preWorkout postWorkout">Show All</button>
+    </p>
+
+    <div class="col">
+        <div class="collapse multi-collapse" id="preWorkout">
+            <div class="card card-body">
+                {% for recipe in recipes %}
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img class="img-fluid" src="{{ recipe.image }}" alt="">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{recipe.recipe_name}}</h5>
+                            {{recipe.recipe_id}}
+                            <p class="card-text">
+                                Ingredients:
+                            <ul>
+                                {% for ingredient in recipe.ingredients %}
+                                <li>{{ ingredient }}</li>
+                                {% endfor %}
+                            </ul>
+                            Instructions:
+                            <ol>
+                                {% for instruction in recipe.instructions %}
+                                <li>{{ instruction }}</li>
+                                {% endfor %}
+                            </ol>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <h5>{{recipe.category_name}}</h5>
+                {% endfor %}
+                {% for recipe in recipes %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="collapse multi-collapse" id="postWorkout">
+            <div class="card card-body">
+                {% for recipe in post %}
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img class="img-fluid" src="{{ recipe.image }}" alt="">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{recipe.recipe_name}}</h5>
+                            {{recipe.recipe_id}}
+                            <p class="card-text">
+                                Ingredients:
+                            <ul>
+                                {% for ingredient in recipe.ingredients %}
+                                <li>{{ ingredient }}</li>
+                                {% endfor %}
+                            </ul>
+                            Instructions:
+                            <ol>
+                                {% for instruction in recipe.instructions %}
+                                <li>{{ instruction }}</li>
+                                {% endfor %}
+                            </ol>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <h5>{{recipe.category_name}}</h5>
+                {% endfor %}
+                {% for recipe in recipes %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% for recipe in recipes %}
+    <h2>{{recipe.category_name}}</h2>
+    <h3>{{recipe.recipe_name}}</h3>
+    Ingredients:
+    <ul>
+        {% for ingredient in recipe.ingredients %}
+        <li>{{ ingredient }}</li>
+        {% endfor %}
+    </ul>
+    Instructions:
+    <ol>
+        {% for instruction in recipe.instructions %}
+        <li>{{ instruction }}</li>
+        {% endfor %}
+    </ol>
+    <img src="{{ recipe.image }}" width="300" height="300" alt="" class="responsive-img">
+    {% endfor %}
+    <h3>Personalise your Recipe</h3>
+</div>
+{% endblock %}
