@@ -1,48 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-    <title>Breathe</title>
-</head>
-
-<body>
-
-    <div class="container">
-        {% for recipe in recipes %}
-        <h2>{{recipe.category_name}}</h2>
-        <h3>{{recipe.recipe_name}}</h3>
-        Ingredients:
-        <ul>
-            {% for ingredient in recipe.ingredients %}
-            <li>{{ ingredient }}</li>
-            {% endfor %}
-        </ul>
-        Instructions:
-        <ol>
-            {% for instruction in recipe.instructions %}
-            <li>{{ instruction }}</li>
-            {% endfor %}
-        </ol>
-        <img src="{{ recipe.image }}" width="300" height="300" alt="" class="responsive-img">
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    {% for recipe in recipes %}
+    <h2>{{recipe.category_name}}</h2>
+    <h3>{{recipe.recipe_name}}</h3>
+    Ingredients:
+    <ul>
+        {% for ingredient in recipe.ingredients %}
+        <li>{{ ingredient }}</li>
         {% endfor %}
-    </div>
-    <div class="container">
-        {% for workout in workouts %}
-        <h2>{{workout.category_name}}</h2>
-        <h3>{{workout.workout_name}}</h3>
-        <p>{{workout.description}}</p>
-        <img src="{{ workout.workout_image }}" width="300" height="300" alt="" class="responsive-img">
+    </ul>
+    Instructions:
+    <ol>
+        {% for instruction in recipe.instructions %}
+        <li>{{ instruction }}</li>
         {% endfor %}
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+    </ol>
+    <img src="{{ recipe.image }}" width="300" height="300" alt="" class="responsive-img">
+    {% endfor %}
+</div>
+<div class="container">
+    {% for workout in workouts %}
+    <h2>{{workout.category_name}}</h2>
+    <h3>{{workout.workout_name}}</h3>
+    <p>{{workout.description}}</p>
+    <img src="{{ workout.workout_image }}" width="300" height="300" alt="" class="responsive-img">
+    {% endfor %}
+</div>
+{% endblock %}
