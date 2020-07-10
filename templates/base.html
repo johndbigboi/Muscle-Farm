@@ -12,16 +12,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 
     <!--  CSS -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
 
     <title>Breathe</title>
 </head>
 
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">Breathe</a>
+            <a class="navbar-brand js-scroll-trigger" href="{{ url_for('index') }}">Breathe</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -30,18 +30,18 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active px-lg-4">
-                        <a class="nav-link" href="index.html">Dashboard
+                        <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link" href="about.html">Recipes</a>
+                        <a class="nav-link" href="{{ url_for('recipe') }}">Recipes</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link" href="products.html">Workouts</a>
+                        <a class="nav-link" href="{{ url_for('workouts') }}">Workouts</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link" href="store.html">Relax</a>
+                        <a class="nav-link" href="{{ url_for('relax') }}">Relax</a>
                     </li>
                     <li class="nav-item px-lg-4">
                         <a class="nav-link" href="store.html">Login In</a>
@@ -50,63 +50,11 @@
             </div>
         </div>
     </nav>
-    <!-- Hero -->
-    <header class="hero">
-        <div class="container d-flex h-100 align-items-center">
-            <div class="hero-title mx-auto text-center">
-                <h1 class="mx-auto my-0 text-uppercase">BREATHE</h1>
-                <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by
-                    Start
-                    Bootstrap.</h2>
-                <a class="btn btn-primary js-scroll-trigger" href="#about">Get Started</a>
-            </div>
-        </div>
-    </header>
-    <!-- Dashboard -->
-    <section class="container-fluid" id="dashboard">
-        <div class="row">
-            <div class="col-md-5 recipes">
-                <a class="dashboard-item" href="#!">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <div class="h2">Recipes</div>
-                            <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../static/images/brooke-lark-08bOYnH_r_E-unsplash.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-md-7 workouts">
-                <div class="row">
-                    <a class="dashboard-item"" href=" #!">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <div class="h2">Workouts</div>
-                                <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice
-                                    cream
-                                    cone!</p>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="../static/images/jesper-aggergaard-oc7tGf44rM0-unsplash.jpg" alt="">
-                    </a>
-                    <a class="dashboard-item" href="#!">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <div class="h2">Zen</div>
-                                <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="../static/images/patrick-fore-JBghIzjbuLs-unsplash.jpg" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- <div class="container-fluid">
+    <!-- Main Content -->
+    <div class="container main">
         {% block content %}
         {% endblock %}
-    </div> -->
+    </div>
     <!-- Footer -->
     <footer class="footer text-center">
         <div class="container">
@@ -137,9 +85,32 @@
     </a>
 
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () { });
+        // Float Back To Top Smooth Scrolling
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('#scroll').fadeIn();
+            } else {
+                $('#scroll').fadeOut();
+            }
+        });
+        // FLOAT TO TOP
+
+        $('#scroll').click(function () {
+            $("html, body").animate({
+                scrollTop: 0
+            }, 600);
+            return false;
+        });
+
+
+
+    </script>
 </body>
 
 </html>
