@@ -1,0 +1,121 @@
+/* Navbar */
+
+.navbar-light .navbar-brand .navbar-nav {
+    color: white;
+}
+
+.navbar-light .navbar-toggler {
+    color: white;
+    border-color: rgba(0, 0, 0, .1);
+}
+
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link {
+    color: white;
+}
+
+/*  Landing Hero */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    min-height: 35rem;
+    padding: 15rem 0;
+    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), 
+                                url("../images/chuttersnap-eHGCUD180xE-unsplash.jpg"); */
+    background: url("../images/chuttersnap-eHGCUD180xE-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.hero-title h1 {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 0.8rem;
+    /* background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)); */
+    background: white;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.hero-title h2 {
+    max-width: 20rem;
+    font-size: 1rem;
+}
+
+/* @media (min-width: 768px) {
+    .hero h1 {
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero {
+        height: 100vh;
+        padding: 0;
+    }
+
+    .hero h1 {
+        font-size: 6.5rem;
+        line-height: 6.5rem;
+        letter-spacing: 0.8rem;
+    }
+
+    .hero h2 {
+        max-width: 30rem;
+        font-size: 1.25rem;
+    }
+} */
+
+
+/* Dashboard */
+
+.recipes {
+    padding: 0;
+    margin: 0;
+}
+
+.workouts {
+
+    margin: 0;
+}
+
+.recipes img {
+    height: 500px;
+    width: 100%;
+}
+
+.workouts img {
+    height: 250px;
+    width: 100%;
+}
+
+.dashboard-item {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.dashboard-item .caption {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(33, 37, 41, .2);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.dashboard-item .caption .caption-content {
+    color: #fff;
+    margin: auto 2rem 2rem;
+}
