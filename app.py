@@ -28,6 +28,11 @@ def recipe():
     return render_template('recipe.html', recipes=mongo.db.recipes.find(), post=mongo.db.post_recipes.find())
 
 
+@app.route('/add_recipe')
+def add_recipe():
+    return render_template('addrecipe.html')
+
+
 @ app.route('/workouts')
 def workouts():
     return render_template('workouts.html', recipes=mongo.db.recipes.find(), workouts=mongo.db.workouts.find())
