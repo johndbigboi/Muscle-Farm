@@ -1,7 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- Jumbotron -->
+<div class="jumbotron jumbotron-fluid" id="hero-recipe">
+    <div class="text-white text-center rgba-stylish-strong">
+
+        <div class="jumbo-content">
+
+            <!-- Content -->
+            <h2 class="jumbo-title">Recipes</h2>
+            <p class="jumbo-body">Welcome</p>
+            <a class="btn peach-gradient" href="{{ url_for('add_recipe') }}" role="button" aria-expanded="false">
+                <img src="../static/images/recipe.png" class="img-fluid" alt="menu">
+                Add Recipe</a>
+
+        </div>
+
+    </div>
+</div>
+<!-- Jumbotron -->
+
 <h3>Feature Recipes</h3>
+<!-- Recipe section -->
 <div class="recipe">
     <p>
         <a class="btn btn-primary" data-toggle="collapse" href="#preWorkout" role="button" aria-expanded="false"
@@ -41,7 +61,8 @@
                         </div>
                     </div>
                 </div>
-                <h5>{{recipe.category_name}}</h5>
+                <a class="btn btn-primary" data-toggle="collapse" href="" role="button" aria-expanded="false"
+                    aria-controls="preWorkout">Add To Dashboard</a>
                 {% endfor %}
                 {% for recipe in recipes %}
                 {% endfor %}
@@ -104,4 +125,5 @@
     {% endfor %}
     <h3>Personalise your Recipe</h3>
 </div>
+<!-- Recipe section -->
 {% endblock %}
