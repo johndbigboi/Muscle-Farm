@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main">
+    {% for workout in workouts %}
+    <h2>{{workout.category_name}}</h2>
+    <h3>{{workout.workout_name}}</h3>
+    <p>{{workout.description}}</p>
+    <img src="{{ workout.workout_image }}" width="300" height="300" alt="" class="responsive-img">
+    {% endfor %}
+    {% for cat in categories %}
+    {{cat.category_name}}
+    {{cat.categories}}
+    {% endfor %}
+    {% for cat in breathe %}
+    {{cat.collection_name}}
+    {{cat.collection}}
+    {{cat.breathe.categories}}
+    {% endfor %}
+</div>
+{% endblock %}
