@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Forms -->
+<!--  url_for('update_recipe', recipe_id=recipe._id)-->
+<form class="add-recipe" action="{{ url_for('insert_recipe') }}" method="POST">
+    <div class="card recipe-name">
+        <div class="col-md-12">
+            <div class="form-row">
+                <h4>Edit Recipe</h4>
+                <div class="col-md-12 mb-3">
+                    <label for="validationDefault01">Recipe name</label>
+                    <input name="recipe_name" id="recipe_name" type="text" class="form-control"
+                        value="{{recipes.recipe_name}}">
+                </div>
+                <div class="col-md-12 mb-3">
+
+                    <label for="validationDefault02"">Category</label>
+                        <select class=" custom-select">
+                        <option selected>Open this select menu</option>
+
+                        {% for cat in categories %}
+                        <option value="category_name" name="category_name" id="category_name"
+                            value="{{recipes.category_name}}">
+                            {{cat.category_name}}</option>
+
+                        {% endfor %}
+                        </select>
+                        <!-- <input type=" text" class="form-control" id="validationDefault02" value="" required> -->
+
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="validationDefault03">Add Image URL</label>
+                    <input name="image" id="image" type="text" class="form-control" id="validationDefault03"
+                        value="{{recipes.image}}">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tables -->
+
+    <div class="card">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h2>Ingredients</h2>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" id="add-newing" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add
+                        New</button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive{-sm|-md|-lg|-xl}">
+            <table class="table table-bordered table-striped" id="addingredients">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Unit and Items</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Please list ingredients, separated be a comma</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="fas fa-minus-circle"></i></a>
+                        </td>
+                    </tr>
+                    {% for ingredient in recipes.ingredients[0:] %}
+                    <tr>
+                        <td>
+                            <ul>
+                                <li><input type="text" class="form-control" name="ingredients" id="ingredients"
+                                        value="{{ ingredient[0:] }}" /></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="fas fa-minus-circle"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h2>Instructions</h2>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" id="add-newmethod" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add
+                        New</button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive{-sm|-md|-lg|-xl}">
+            <table class="table table-bordered table-striped" id="addinstruction">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Instruction</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Please list instrucions, separated be a comma</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="fas fa-minus-circle"></i></a>
+                        </td>
+                    </tr>
+                    {% for instruction in recipes.instructions[0:] %}
+                    <tr>
+                        <td>
+                            <ul>
+                                <li><input type="text" class="form-control" name="ingredients" id="ingredients"
+                                        value="{{ instruction[0:] }}" /></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="fas fa-minus-circle"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Sign up button -->
+    <div class="card">
+        <button class="btn  btn-outline-info btn-rounded btn-block" type="submit">Update
+            Recipe</button>
+        <a class="btn btn-outline-info btn-rounded btn-block" href="{{ url_for('recipe') }}" role=" button"
+            aria-expanded="false">
+            Close</a>
+    </div>
+</form>
+
+{% endblock %}
