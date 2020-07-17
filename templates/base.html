@@ -89,8 +89,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
     <script>
-        $(document).ready(function () { });
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            var actions = $("table td:last-child").html();
+            $('#addingredients li').each(function (i) {
+                $(this).find('input').eq(0).attr("name", i++);
+            });
+
+            // Ingredients Add row
+            // Append table with add row form on add new button click
+            $("#add-newing").click(function () {
+                /*  var index = $("table tbody tr:last-child").index(); */
+                var col = '<tr>' +
+                    '<td>' +
+                    /*'<ul>' + '<li><input type="text" class="form-control" name="' + "ingredients" + ($('#addingredients li').length) + '"></li>' + '</ul>' + */
+                    '<ul>' + '<li><input type="text" class="form-control" name="ingredients"></li>' + '</ul>' +
+                    '</td>' +
+                    '<td>' + actions + '</td>' +
+                    '</tr>';
+                /*  var row = '<tr>' +
+                     '<td><input type="text" class="form-control" name="ingredients" value="" placeholder="' + ($('#tableadd tr').length) + '"/></td>' +
+                    '<td><input type="text" class="form-control" name="ingredients" id="ingredients"></td>' + 
+                '<td>' + actions + '</td>' +
+                    '</tr>'; */
+                $("#addingredients").append(col);
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+
+            $('#addinstruction li').each(function (i) {
+                $(this).find('input').eq(0).attr("name", i++);
+            });
+
+            // Instructions Add row
+            // Append table with add row form on add new button click
+            $("#add-newmethod").click(function () {
+
+                var col = '<tr>' +
+                    '<td>' +
+                    /* '<ul>' + '<li><input type="text" class="form-control" name="' + "value" + ($('#addinstruction li').length) + '"></li>' + '</ul>' + */
+                    '<ul>' + '<li><input type="text" class="form-control" name="instructions"></li>' + '</ul>' +
+                    '</td>' +
+                    '<td>' + actions + '</td>' +
+                    '</tr>';
+
+                $("#addinstruction").append(col);
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+            // delete row on add button click
+            $(document).on("click", ".delete", function () {
+                $(this).parents("tr").remove();
+            });
+
+
+
+
+        });
         // Float Back To Top Smooth Scrolling
         $(window).scroll(function () {
             if ($(this).scrollTop() > 100) {
