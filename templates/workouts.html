@@ -7,5 +7,9 @@
     <p>{{workout.description}}</p>
     <img src="{{ workout.workout_image }}" width="300" height="300" alt="" class="responsive-img">
     {% endfor %}
+    {% for cat in categories %}
+    {{cat.collection}}
+    {{cat.categories}}
+    {% endfor %}
 </div>
 {% endblock %}
