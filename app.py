@@ -30,17 +30,57 @@ def recipe():
 
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('addrecipe.html')
+    value = mongo.db.recipes.find({'ingredients': ""})
+    return render_template('addrecipe.html', categories=mongo.db.categories.find(), value=value)
+
+
+@app.route('/insert_recipe', methods=['POST'])
+def insert_recipe():
+    """
+    ingredients_doc = {'ingredient': request.form.getlist(
+        'ingredients[]')}  # send form to dictionary
+    mongo.db.recipes.insert(ingredients_doc)
+    """
+    """
+    recipe = mongo.db.recipes  # var to get db from mongo of tasks
+    recipe.insert_one(request.form.to_dict())  # send form to dictionary
+    # go to the task.html after sending form
+    """
+
+    recipe = {
+        'recipe_name': request.form.get('recipe_name'),
+        'category_name': request.form.get('category_name'),
+        'ingredients': request.form.getlist('ingredients'),
+        'instructions': request.form.getlist('instructions'),
+        'values': request.form.get('value {($split: [","])}'),
+        'image': request.form.get('image'),
+
+    }
+    mongo.db.recipes.insert_one(recipe)
+
+    return redirect(url_for('recipe'))
+
+
+@ app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    return render_template('editrecipe.html',
+                           recipes=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))  # to do a find on the categories table.
+
+
+@ app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('recipe'))
 
 
 @ app.route('/workouts')
 def workouts():
-    return render_template('workouts.html', recipes=mongo.db.recipes.find(), workouts=mongo.db.workouts.find())
+    return render_template('workouts.html', categories=mongo.db.breathe.find(), workouts=mongo.db.workouts.find())
 
 
 @ app.route('/relax')
 def relax():
-    return render_template('relax.html', recipes=mongo.db.recipes.find(), workouts=mongo.db.workouts.find())
+    return render_template('relax.html', categories=mongo.db.categories.find(), breathe=mongo.db.breathe.find())
 
 
 if __name__ == '__main__':
