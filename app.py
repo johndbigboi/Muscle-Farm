@@ -50,11 +50,9 @@ def insert_recipe():
     recipe = {
         'recipe_name': request.form.get('recipe_name'),
         'category_name': request.form.get('category_name'),
-        'ingredients': request.form.getlist('ingredients'),
-        'instructions': request.form.getlist('instructions'),
-        'values': request.form.get('value {($split: [","])}'),
         'image': request.form.get('image'),
-
+        'ingredients': request.form.getlist('ingredients'),
+        'instructions': request.form.getlist('instructions')
     }
     mongo.db.recipes.insert_one(recipe)
 
@@ -63,8 +61,27 @@ def insert_recipe():
 
 @ app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
+    all_categories = mongo.db.categories.find()
     return render_template('editrecipe.html',
-                           recipes=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))  # to do a find on the categories table.
+                           recipes=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}), categories=all_categories)  # to do a find on the categories table.
+
+
+@app.route('/update_recipe/<recipe_id>', methods=['POST'])
+# We pass in the task ID because that's our hook into the primary key.
+def update_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    """ So what we do is we access the tasks collection.
+    Then we call the update function.We specify the ID.
+    That's our key to uniqueness."""
+    recipes.update({'_id': ObjectId(recipe_id)},
+                   {
+        'recipe_name': request.form.get('recipe_name'),
+        'category_name': request.form.get('category_name'),
+        'image': request.form.get('image'),
+        'ingredients': request.form.getlist('ingredients'),
+        'instructions': request.form.getlist('instructions'),
+    })
+    return redirect(url_for('recipe'))
 
 
 @ app.route('/delete_recipe/<recipe_id>')
