@@ -105,17 +105,19 @@
                 var col = '<tr>' +
                     '<td>' +
                     /*'<ul>' + '<li><input type="text" class="form-control" name="' + "ingredients" + ($('#addingredients li').length) + '"></li>' + '</ul>' + */
-                    '<ul>' + '<li><input type="text" class="form-control" name="ingredients"></li>' + '</ul>' +
+                    '<ul>' + '<li><input type="text" class="form-control" name="ingredients" value=""></li>' + '</ul>' +
                     '</td>' +
                     '<td>' + actions + '</td>' +
                     '</tr>';
-                /*  var row = '<tr>' +
-                     '<td><input type="text" class="form-control" name="ingredients" value="" placeholder="' + ($('#tableadd tr').length) + '"/></td>' +
-                    '<td><input type="text" class="form-control" name="ingredients" id="ingredients"></td>' + 
-                '<td>' + actions + '</td>' +
-                    '</tr>'; */
+
+                //add ingredients table row form for addrecipe.html
                 $("#addingredients").append(col);
                 $('[data-toggle="tooltip"]').tooltip();
+
+                //add ingredients table row form for editrecipe.html
+                $("#editIngredients").append(col);
+                $('[data-toggle="tooltip"]').tooltip();
+
             });
 
             $('#addinstruction li').each(function (i) {
@@ -134,7 +136,12 @@
                     '<td>' + actions + '</td>' +
                     '</tr>';
 
+                //add instructions table row form for addrecipe.html 
                 $("#addinstruction").append(col);
+                $('[data-toggle="tooltip"]').tooltip();
+
+                //add instructions table row form for editrecipe.html
+                $("#editInstruction").append(col);
                 $('[data-toggle="tooltip"]').tooltip();
             });
             // delete row on add button click
