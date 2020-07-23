@@ -2,6 +2,7 @@
 
 {% block content %}
 <!-- Jumbotron -->
+
 <div class="jumbotron jumbotron-fluid" id="hero-recipe">
     <div class="text-white text-center rgba-stylish-strong">
 
@@ -10,132 +11,58 @@
             <!-- Content -->
             <h2 class="jumbo-title">Recipes</h2>
             <p class="jumbo-body">Welcome</p>
-            <a class="btn peach-gradient" href="{{ url_for('add_recipe') }}" role="button" aria-expanded="false">
+            <button class="btn peach-gradient" role="button" data-toggle="modal" data-target="#addModalRecipe"
+                type="button">
                 <img src="../static/images/recipe.png" class="img-fluid" alt="menu">
-                Add Recipe</a>
-
+                Add Recipe</button>
         </div>
 
     </div>
 </div>
 <!-- Jumbotron -->
 
-<h3>Feature Recipes</h3>
 <!-- Recipe section -->
-<div class="recipe">
-    <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#preWorkout" role="button" aria-expanded="false"
-            aria-controls="preWorkout">Pre Workout</a>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#postWorkout"
-            aria-expanded="false" aria-controls="postWorkout">Post Workout</button>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse"
-            aria-expanded="false" aria-controls="preWorkout postWorkout">Show All</button>
-    </p>
-
-    <div class="col">
-        <div class="collapse multi-collapse" id="preWorkout">
-            {% for recipe in recipes %}
-            <div class="card card-body">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img class="img-fluid" src="{{ recipe.image }}" alt="">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{recipe.recipe_name}}</h5>
-                            {{recipe.recipe_id}}
-                            <h6 class="card-title">{{recipe.category_name}}</h6>
-                            <p class="card-text">
-                                Ingredients:
-                            <ul>
-                                {% for ingredient in recipe.ingredients %}
-                                <li>{{ ingredient }}</li>
-                                {% endfor %}
-                            </ul>
-                            Instructions:
-                            <ol>
-                                {% for instruction in recipe.instructions %}
-                                <li>{{ instruction }}</li>
-                                {% endfor %}
-                            </ol>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="recipebuttons">
-                    <div class="row">
-                        <a class="btn btn-primary" data-toggle="collapse" href="" role="button"
-                            aria-expanded="false">Add To
-                            Dashboard</a>
-                        <a class="btn btn-primary" href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
-                            role="button" aria-expanded="false">Edit</a>
-                        <a class="btn btn-primary" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
-                            role="button" aria-expanded="false">Delete Recipe</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            {% for recipe in recipes %}
-            {% endfor %}
-
+<div class="recipe-card-body">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img class="img-fluid" src="{{ recipe.image }}" alt="">
         </div>
-    </div>
-    <div class="col">
-        <div class="collapse multi-collapse" id="postWorkout">
-            <div class="card card-body">
-                {% for recipe in post %}
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img class="img-fluid" src="{{ recipe.image }}" alt="">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{recipe.recipe_name}}</h5>
-                            {{recipe.recipe_id}}
-                            <p class="card-text">
-                                Ingredients:
-                            <ul>
-                                {% for ingredient in recipe.ingredients %}
-                                <li>{{ ingredient }}</li>
-                                {% endfor %}
-                            </ul>
-                            Instructions:
-                            <ol>
-                                {% for instruction in recipe.instructions %}
-                                <li>{{ instruction }}</li>
-                                {% endfor %}
-                            </ol>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <h5>{{recipe.category_name}}</h5>
-                {% endfor %}
-                {% for recipe in recipes %}
-                {% endfor %}
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{recipe.recipe_name}}</h5>
+                <h6 class="card-title">{{recipe.category_name}}</h6>
+                <p class="card-text">
+                    Ingredients:
+                <ul>
+                    {% for ingredient in recipe.ingredients %}
+                    <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+                Instructions:
+                <ol>
+                    {% for instruction in recipe.instructions %}
+                    <li>{{ instruction }}</li>
+                    {% endfor %}
+                </ol>
+                </p>
             </div>
         </div>
     </div>
 
-    {% for recipe in recipes %}
-    <h2>{{recipe.category_name}}</h2>
-    <h3>{{recipe.recipe_name}}</h3>
-    Ingredients:
-    <ul>
-        {% for ingredient in recipe.ingredients %}
-        <li>{{ ingredient }}</li>
-        {% endfor %}
-    </ul>
-    Instructions:
-    <ol>
-        {% for instruction in recipe.instructions %}
-        <li>{{ instruction }}</li>
-        {% endfor %}
-    </ol>
-    <img src="{{ recipe.image }}" width="300" height="300" alt="" class="responsive-img">
-    {% endfor %}
-    <h3>Personalise your Recipe</h3>
+    <div class="recipebuttons">
+        <div class="row">
+            <a class="btn btn-primary" data-toggle="collapse" href="" role="button" aria-expanded="false">Add To
+                Dashboard</a>
+            <a class="btn btn-primary" href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" role="button"
+                aria-expanded="false">Edit</a>
+            <a class="btn btn-primary" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" role="button"
+                aria-expanded="false">
+                Delete Recipe</a>
+            <a class="btn btn-outline-info btn-rounded" href="{{ url_for('allrecipe', category='Recipes') }}"
+                role=" button" aria-expanded="false">
+                Close</a>
+        </div>
+    </div>
 </div>
-<!-- Recipe section -->
+
 {% endblock %}
