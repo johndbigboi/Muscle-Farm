@@ -1,3 +1,8 @@
+/* * {
+    outline: 1px solid #E91E63 !important;
+
+} */
+
 h4 {
     text-align: center;
 }
@@ -38,9 +43,10 @@ h4 {
 .hero {
     position: relative;
     width: 100%;
-    height: 40vh;
+    /*  height: 40vh; */
+    height: 100%;
     min-height: 45rem;
-    padding: 15rem 0;
+    padding: 14rem 0;
     /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), 
                                 url("../images/chuttersnap-eHGCUD180xE-unsplash.jpg"); */
     background: url("../images/board.jpg");
@@ -48,6 +54,7 @@ h4 {
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
+    overflow: hidden;
 }
 
 .hero-title {
@@ -117,11 +124,12 @@ h4 {
 } */
 
 /* main content */
-/* .main {
-     margin-top: 3.5rem;
+
+.main {
+    height: 90vh;
 }
- */
-/* Recipe */
+
+/* allRecipe */
 
 
 #hero-recipe {
@@ -367,10 +375,13 @@ table.table td .add {
 }
 
 /* Footer */
+
 footer.footer {
     padding-top: 2rem;
-    /* background-color: rgba(45, 46, 41, 1); */
-    background-color: rgba(7, 7, 7, 1);
+
+    background-color: rgba(45, 46, 41, 1);
+    /*  background-color: rgba(7, 7, 7, 1); */
+    /* height: 10vh; */
 }
 
 footer.footer .social-link {
@@ -389,15 +400,23 @@ footer i {
     color: #00471b;
 }
 
-.hover-effect5 ul li:hover i {
+.hover ul li:hover i {
     -moz-transform: scale(1.5);
     -webkit-transform: scale(1.5);
     -o-transform: scale(1.5);
     -ms-transform: scale(1.5);
     transform: scale(1.5);
-    color: #00471b;
+    color: #4267B2;
     /* line-height: 50px; */
     /* text-shadow: 1px 1px 2px #FFA000; */
+}
+
+.hover ul li:hover .github i {
+    color: black;
+}
+
+.hover ul li:hover .linkedin i {
+    color: #0e76a8;
 }
 
 .scroll-to-top {
