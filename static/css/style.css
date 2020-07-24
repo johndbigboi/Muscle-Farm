@@ -5,6 +5,16 @@ h4 {
 /* Navbar */
 .navbar {
     margin-bottom: 5rem;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.navbar a {
+    color: #eee1c6;
+}
+
+.navbar img {
+    width: 30px;
+    height: 30px;
 }
 
 .navbar-light .navbar-brand .navbar-nav {
@@ -29,31 +39,56 @@ h4 {
     position: relative;
     width: 100%;
     height: 40vh;
-    min-height: 35rem;
+    min-height: 45rem;
     padding: 15rem 0;
     /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), 
                                 url("../images/chuttersnap-eHGCUD180xE-unsplash.jpg"); */
-    background: url("../images/chuttersnap-eHGCUD180xE-unsplash.jpg");
+    background: url("../images/board.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
 }
 
+.hero-title {
+    background-color: rgba(0, 141, 27, 0.1);
+    color: rgba(0, 141, 27, 0.1);
+    padding: 20px;
+    border: 8px solid;
+}
+
 .hero-title h1 {
     font-size: 2.5rem;
-    line-height: 2.5rem;
+    /* line-height: 2.5rem; */
     letter-spacing: 0.8rem;
-    /* background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)); */
-    background: white;
+    /* background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 25%, rgba(238, 225, 200, 1) 48%); */
+    background: rgb(15, 65, 60);
+    background: linear-gradient(0deg, rgba(15, 65, 60, 1) 15%, rgba(54, 236, 217, 1) 100%);
+    /* background: rgb(15, 65, 60);
+    background: linear-gradient(0deg, rgba(15, 65, 60, 1) 24%, rgba(238, 225, 200, 1) 100%); */
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
+    border-top: 5px solid #eee1c6;
+    border-bottom: 5px solid #eee1c6;
 }
 
 .hero-title h2 {
     max-width: 20rem;
     font-size: 1rem;
+    color: #eee1c6;
+}
+
+.hero-title img {
+    height: 150px;
+    width: 150px;
+}
+
+.hero-title a {
+    color: #fff;
+    background-color: #0076C1;
+    border-color: #004614;
 }
 
 /* @media (min-width: 768px) {
@@ -82,10 +117,10 @@ h4 {
 } */
 
 /* main content */
-.main {
-    margin-top: 3.5rem;
+/* .main {
+     margin-top: 3.5rem;
 }
-
+ */
 /* Recipe */
 
 
@@ -333,19 +368,36 @@ table.table td .add {
 
 /* Footer */
 footer.footer {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 2rem;
+    /* background-color: rgba(45, 46, 41, 1); */
+    background-color: rgba(7, 7, 7, 1);
 }
 
 footer.footer .social-link {
     display: block;
     height: 4rem;
     width: 4rem;
-    line-height: 4.3rem;
-    font-size: 1.5rem;
-    background-color: orange;
+    line-height: 3.7rem;
+    font-size: 2rem;
+    background-color: #eee1c6;
     transition: background-color .15s ease-in-out;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .1);
+    border: 3px solid #00471b;
+}
+
+footer i {
+    color: #00471b;
+}
+
+.hover-effect5 ul li:hover i {
+    -moz-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
+    color: #00471b;
+    /* line-height: 50px; */
+    /* text-shadow: 1px 1px 2px #FFA000; */
 }
 
 .scroll-to-top {
@@ -359,4 +411,6 @@ footer.footer .social-link {
     color: #fff;
     background: rgba(52, 58, 64, .5);
     line-height: 45px;
+    font-size: 30px;
+    padding: 0 10px;
 }
