@@ -14,40 +14,41 @@
     <!--  CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
 
-    <title>Breathe</title>
+    <title>Muscle
+        Farm</title>
 </head>
 
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="{{ url_for('index') }}">Breathe</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active px-lg-4">
-                        <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link" href="{{ url_for('allrecipe', category='Recipes') }}">Recipes</a>
-                    </li>
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link" href="{{ url_for('workouts') }}">Workouts</a>
-                    </li>
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link" href="{{ url_for('relax') }}">Relax</a>
-                    </li>
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link" href="store.html">Login In</a>
-                    </li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <a class="navbar-brand js-scroll-trigger" href="{{ url_for('index') }}">
+            <img src="../static/images/broccoli-icon.png" class="d-inline-block align-top text-white" alt="menu"> Muscle
+            Farm</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse text-white" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto text-white text-center">
+                <li class="nav-item active px-lg-2">
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item px-lg-2">
+                    <a class="nav-link" href="{{ url_for('allrecipe', category='Recipes') }}">Recipes</a>
+                </li>
+                <li class="nav-item px-lg-2">
+                    <a class="nav-link" href="{{ url_for('workouts') }}">Workouts</a>
+                </li>
+                <li class="nav-item px-lg-2">
+                    <a class="nav-link" href="{{ url_for('relax') }}">Relax</a>
+                </li>
+                <li class="nav-item px-lg-2">
+                    <a class="nav-link" href="store.html">Login In</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -58,21 +59,21 @@
     </div>
     <!-- Footer -->
     <footer class="footer text-center">
-        <div class="container">
-            <ul class="list-inline mb-5">
+        <div class="container hover-effect5">
+            <ul class="list-inline">
                 <li class="list-inline-item">
                     <a class="social-link rounded-circle text-white mr-3" href="#!">
-                        <i class="icon-social-facebook"></i>
+                        <i class="fab fa-facebook"></i>
                     </a>
                 </li>
                 <li class="list-inline-item">
                     <a class="social-link rounded-circle text-white mr-3" href="#!">
-                        <i class="icon-social-twitter"></i>
+                        <i class="fab fa-github"></i>
                     </a>
                 </li>
                 <li class="list-inline-item">
                     <a class="social-link rounded-circle text-white" href="#!">
-                        <i class="icon-social-github"></i>
+                        <i class="fab fa-linkedin-in"></i>
                     </a>
                 </li>
             </ul>
