@@ -27,10 +27,10 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
-            <i class="fas fa-bars text-white"></i>
+            <i class="fas fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse text-white" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto text-white text-center">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto text-center">
                 <li class="nav-item active px-lg-2">
                     <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard
                         <span class="sr-only">(current)</span>
@@ -53,10 +53,10 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="main">
-        {% block content %}
-        {% endblock %}
-    </div>
+
+    {% block content %}
+    {% endblock %}
+
     <!-- Footer -->
     <footer class="footer text-center">
         <div class="container hover">
@@ -155,10 +155,19 @@
                 $(this).parents("tr").remove();
             });
 
-
-
-
         });
+        /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("mainNav").style.top = "0";
+            } else {
+                document.getElementById("mainNav").style.top = "-55px";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
         // Float Back To Top Smooth Scrolling
         $(window).scroll(function () {
             if ($(this).scrollTop() > 100) {
@@ -175,6 +184,7 @@
             }, 600);
             return false;
         });
+
 
 
 
