@@ -3,46 +3,61 @@
 <!-- Jumbotron -->
 
 <div class="jumbotron jumbotron-fluid" id="hero-recipe">
-    <div class="text-white text-center rgba-stylish-strong">
+    <div class="text-center jumbo-sceen">
         <div class="jumbo-content">
 
             <!-- Content -->
             <h2 class="jumbo-title">Recipes</h2>
             <p class="jumbo-body">Muscle Made In The Kitchen</p>
 
-            <a class="btn peach-gradient" href="{{ url_for('add_recipe') }}" role="button" aria-expanded="false">
+            <a class="btn btngradient" href="{{ url_for('add_recipe') }}" role="button" aria-expanded="false">
                 <img src="../static/images/recipe.png" class="img-fluid" alt="menu">
                 Add Recipe</a>
+
         </div>
 
     </div>
 </div>
 <!-- Jumbotron -->
+<div class="container border-gradient border-gradient-green" id="menu">
 
-<!--- allrecipe -->
-<div class="menu mr-auto">
+    <ul class="list-inline text-center m-auto">
+        <li class="list-inline-item">
+            <a class="menu-links" href="{{ url_for('allrecipe', category='All Recipe') }}">All Recipe</a>
 
-    <a class="menu-links" href="{{ url_for('allrecipe', category='all') }}">All Recipe</a>
-    <a class="menu-links" href="{{ url_for('allrecipe', category='Pre Workout Meal') }}">Pre Workout Recipe</a>
-    <a class="menu-links" href="{{ url_for('allrecipe', category='Post Workout Meal') }}">Post Workout Recipe</a>
+        </li>
+        <li class="list-inline-item">
+            <a class="menu-links" href="{{ url_for('allrecipe', category='Pre Workout Meal') }}">Pre Workout
+                Recipe</a>
+
+        </li>
+        <li class="list-inline-item">
+            <a class="menu-links" href="{{ url_for('allrecipe', category='Post Workout Meal') }}">Post Workout
+                Recipe</a>
+        </li>
+    </ul>
+
 </div>
 
-<div class="container-fluid">
-    <h2>{{ category_title }}</h2>
+<!--- allrecipe -->
 
+<div class="container-fluid mb-5" id="allrecipe">
+    <div class="category-title">
+        <h2>{{ category_title }}</h2>
+    </div>
     <div class="row">
         {% for recipe in recipe %}
         <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
             <div class="card-deck">
                 <div class="card">
                     <a href="{{url_for('get_recipe', recipe_id=recipe._id)}}">
-                        <img class="img-fluid card-img-top" src="{{ recipe.image }}" alt="">
+                        <img class="card-img-top" src="{{ recipe.image }}" alt="">
                         <div class="card-body">
                             <h5 class="card-title">{{recipe.recipe_name}}</h5>
                             <p class="card-text">{{recipe.category_name}}</p>
                             <div class="card-footer">
-                                <p class="card-text"><small class="text-muted"><i class="fas fa-clock"
-                                            aria-hidden="true"></i>
+                                <p class="card-text">
+                                    <small><i class="fas fa-clock" aria-hidden="true"></i>
                                         {{recipe.prep_time}}</small>
                                 </p>
                             </div>
@@ -54,8 +69,5 @@
         {% endfor %}
     </div>
 </div>
-
-<h3>Feature Recipes</h3>
-
 <!-- Recipe section -->
 {% endblock %}
