@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Jumbotron -->
+
+<div class="jumbotron jumbotron-fluid" id="hero-recipe">
+    <div class="jumbo-screen text-center">
+        <div class="jumbo-content">
+
+            <!-- Content -->
+            <h2 class="jumbo-title">Recipes</h2>
+            <p class="jumbo-body">Muscle Made In The Kitchen</p>
+
+            <a class="btn btngradient" href="{{ url_for('add_recipe') }}" role="button" aria-expanded="false">
+                <img src="../static/images/recipe.png" class="img-fluid" alt="menu">
+                Add Recipe</a>
+
+        </div>
+
+    </div>
+</div>
+<!-- Jumbotron -->
+
+<div class="" id="menu">
+
+    <div class="wrapper-search-bar">
+        <div class="container border-gradient border-gradient-green">
+            <div class="search-bar">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-sm-12">
+                        <div class="search-box">
+                            <form class="search-box-home" method="POST" action="{{ url_for('search', name=search) }}">
+                                <div class="slider-search-left">
+                                    <span>Search</span>
+                                    <label for="search-slider">
+                                        <input type="search" id="search-slider" placeholder="keyword" name="search"
+                                            id="search" type="text">
+                                        <button type="submit" name="search" value="search">
+                                            <i class="fa fa-search"></i></button>
+                                    </label>
+                                </div>
+                            </form>
+                            <div class="search-option">
+                                <span>or</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-6 col-sm-12">
+
+                        <ul class="list-inline text-center m-auto">
+                            <li class="list-inline-item">
+                                <a class="menu-links" href="{{ url_for('allrecipe', category='All Recipe') }}">All
+                                    Recipe</a>
+
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="menu-links" href="{{ url_for('allrecipe', category='Pre Workout Meal') }}">Pre
+                                    Workout
+                                    Recipe</a>
+
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="menu-links"
+                                    href="{{ url_for('allrecipe', category='Post Workout Meal') }}">Post Workout
+                                    Recipe</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--search bar ends-->
+
+
+
+
+
+</div>
+
+
+
+<!--- allrecipe -->
+
+<div class="container-fluid mb-5" id="allrecipe">
+    <div class="search-title">Search Results:</div>
+    <div class="category-title">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+
+        <h2>{{ message }}</h2>
+
+        {% endfor %}
+
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div class="row">
+        {% for result in results %}
+        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="card-deck">
+                <div class="card">
+                    <a href="{{url_for('get_recipe', recipe_id=result._id)}}">
+                        <img class="card-img-top" src="{{ result.image }}" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{result.recipe_name}}</h5>
+                            <p class="card-text">{{result.category_name}}</p>
+                            <div class="card-footer">
+                                <p class="card-text">
+                                    <small><i class="fas fa-clock" aria-hidden="true"></i>
+                                        {{result.prep_time}}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- Recipe section -->
+{% endblock %}
