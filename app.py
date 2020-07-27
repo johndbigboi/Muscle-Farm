@@ -1,7 +1,7 @@
 import os
 if os.path.exists("env.py"):
     import env
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -9,6 +9,8 @@ app = Flask(__name__)
 
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config["MONGO_DBNAME"] = 'breathe'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+
 
 mongo = PyMongo(app)
 
@@ -35,20 +37,42 @@ def allrecipe(category):
 
     return render_template('allrecipe.html', recipe=recipe, category_title=category, recipes=mongo.db.recipes.find())
 
+# ---- SEARCH ----- #
 
-@ app.route('/recipe/<recipe_id>')
+
+@app.route('/allrecipe/<recipe_name>')
+def searchname(recipe_name):
+    mongo.db.recipes.find({"$text": {"$search": recipe_name}})
+    return render_template('allrecipe.html', name=recipe_name)
+
+
+@app.route('/search', methods=["GET", "POST"])
+def search():
+
+    search = request.form.get("search")
+    results = mongo.db.recipes.find({"$text": {"$search": search}}).limit(2)
+    result_count = mongo.db.recipes.find(
+        {"$text": {"$search": search}}).count()
+    if result_count > 0:
+        return render_template("search.html", results=results, search=search)
+    else:
+        flash("No results found. Please try again")
+        return render_template("search.html", results=results, search=search)
+
+
+@app.route('/recipe/<recipe_id>')
 def get_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     post = mongo.db.post_recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("recipe.html", recipe=recipe, post=post)
 
 
-@ app.route('/add_recipe')
+@app.route('/add_recipe')
 def add_recipe():
     return render_template('addrecipe.html', categories=mongo.db.categories.find())
 
 
-@ app.route('/insert_recipe', methods=['POST'])
+@app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     """
     ingredients_doc = {'ingredient': request.form.getlist(
@@ -76,7 +100,7 @@ def insert_recipe():
     return render_template('allrecipe.html')
 
 
-@ app.route('/edit_recipe/<recipe_id>')
+@app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     all_categories = mongo.db.categories.find()
     prerecipes = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
@@ -84,7 +108,7 @@ def edit_recipe(recipe_id):
                            recipes=prerecipes, categories=all_categories)  # to do a find on the categories table.
 
 
-@ app.route('/update_recipe/<recipe_id>', methods=['POST'])
+@app.route('/update_recipe/<recipe_id>', methods=['POST'])
 # We pass in the task ID because that's our hook into the primary key.
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
@@ -105,18 +129,18 @@ def update_recipe(recipe_id):
     return render_template('allrecipe.html')
 
 
-@ app.route('/delete_recipe/<recipe_id>')
+@app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return render_template('allrecipe.html')
 
 
-@ app.route('/workouts')
+@app.route('/workouts')
 def workouts():
     return render_template('workouts.html', categories=mongo.db.breathe.find(), workouts=mongo.db.workouts.find())
 
 
-@ app.route('/relax')
+@app.route('/relax')
 def relax():
     return render_template('relax.html', categories=mongo.db.categories.find(), recipe=mongo.db.recipes.find())
 
