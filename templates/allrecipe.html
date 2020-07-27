@@ -3,7 +3,7 @@
 <!-- Jumbotron -->
 
 <div class="jumbotron jumbotron-fluid" id="hero-recipe">
-    <div class="text-center jumbo-sceen">
+    <div class="jumbo-screen text-center">
         <div class="jumbo-content">
 
             <!-- Content -->
@@ -19,25 +19,67 @@
     </div>
 </div>
 <!-- Jumbotron -->
-<div class="container border-gradient border-gradient-green" id="menu">
+<div class="" id="menu">
 
-    <ul class="list-inline text-center m-auto">
-        <li class="list-inline-item">
-            <a class="menu-links" href="{{ url_for('allrecipe', category='All Recipe') }}">All Recipe</a>
+    <div class="wrapper-search-bar">
+        <div class="container border-gradient border-gradient-green">
+            <div class="search-bar">
+                <div class="row">
+                    <div class="col-lg-4 col-md-5">
+                        <div class="search-box">
+                            <form class="search-box-home" method="POST" action="{{ url_for('search', name=search) }}">
+                                <div class="slider-search-left">
+                                    <span>Search</span>
+                                    <label for="search-slider">
+                                        <input type="search" id="search-slider" placeholder="keyword" name="search"
+                                            id="search" type="text">
+                                        <button type="submit" name="search" value="search">
+                                            <i class="fa fa-search"></i></button>
+                                    </label>
+                                </div>
+                            </form>
+                            <div class="search-option">
+                                <span>or</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-7 col-sm-12">
 
-        </li>
-        <li class="list-inline-item">
-            <a class="menu-links" href="{{ url_for('allrecipe', category='Pre Workout Meal') }}">Pre Workout
-                Recipe</a>
+                        <ul class="list-inline text-center menu-item">
+                            <li class="list-inline-item">
+                                <a class="menu-links menu-item-border"
+                                    href="{{ url_for('allrecipe', category='All Recipe') }}">All
+                                    Recipe</a>
 
-        </li>
-        <li class="list-inline-item">
-            <a class="menu-links" href="{{ url_for('allrecipe', category='Post Workout Meal') }}">Post Workout
-                Recipe</a>
-        </li>
-    </ul>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="menu-links menu-item-border"
+                                    href="{{ url_for('allrecipe', category='Pre Workout Meal') }}">Pre
+                                    Workout
+                                    Recipe</a>
+
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="menu-links"
+                                    href="{{ url_for('allrecipe', category='Post Workout Meal') }}">Post Workout
+                                    Recipe</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--search bar ends-->
+
+
+
+
 
 </div>
+
+
 
 <!--- allrecipe -->
 
