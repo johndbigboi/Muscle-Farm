@@ -3,14 +3,14 @@
 {% block content %}
 <!-- Jumbotron -->
 
-<div class="jumbotron jumbotron-fluid" id="hero-recipe">
-    <div class="text-white text-center rgba-stylish-strong">
+<div class="jumbotron jumbotron-fluid" id="recipe-view">
+    <div class="recipe-view-content d-flex text-center">
 
-        <div class="jumbo-content">
+        <div class="jumbo-content mx-auto text-center">
 
             <!-- Content -->
-            <h2 class="jumbo-title">Recipes</h2>
-            <p class="jumbo-body">Welcome</p>
+            <h2 class="jumbo-title">RECIPES</h2>
+            <p class="jumbo-body">Muscle Made In The Kitchen</p>
             <button class="btn btngradient" role="button" data-toggle="modal" data-target="#addModalRecipe"
                 type="button">
                 <img src="../static/images/recipe.png" class="img-fluid" alt="menu">
@@ -20,6 +20,7 @@
     </div>
 </div>
 <!-- Jumbotron -->
+
 
 <!-- Recipe section -->
 <div class="recipe-card-body">
@@ -49,8 +50,8 @@
         </div>
     </div>
 
-    <div class="recipebuttons">
-        <div class="row">
+    <div class="recipebuttons mt-3">
+        <div class="row  mx-auto">
             <a class="btn btn-primary" data-toggle="collapse" href="" role="button" aria-expanded="false">Add To
                 Dashboard</a>
             <a class="btn btn-primary" href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" role="button"
