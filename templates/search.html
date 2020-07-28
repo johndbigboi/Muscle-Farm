@@ -20,13 +20,14 @@
 </div>
 <!-- Jumbotron -->
 
-<div class="" id="menu">
+<!--search-->
 
+<div class="search-box-menu" id="menu">
     <div class="wrapper-search-bar">
         <div class="container border-gradient border-gradient-green">
             <div class="search-bar">
                 <div class="row">
-                    <div class="col-lg-5 col-md-6 col-sm-12">
+                    <div class="col-lg-4 col-md-5">
                         <div class="search-box">
                             <form class="search-box-home" method="POST" action="{{ url_for('search', name=search) }}">
                                 <div class="slider-search-left">
@@ -44,16 +45,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-md-6 col-sm-12">
+                    <div class="col-lg-8 col-md-7 col-sm-12">
 
-                        <ul class="list-inline text-center m-auto">
+                        <ul class="list-inline text-center menu-item">
                             <li class="list-inline-item">
-                                <a class="menu-links" href="{{ url_for('allrecipe', category='All Recipe') }}">All
+                                <a class="menu-links menu-item-border"
+                                    href="{{ url_for('allrecipe', category='All Recipe') }}">All
                                     Recipe</a>
 
                             </li>
                             <li class="list-inline-item">
-                                <a class="menu-links" href="{{ url_for('allrecipe', category='Pre Workout Meal') }}">Pre
+                                <a class="menu-links menu-item-border"
+                                    href="{{ url_for('allrecipe', category='Pre Workout Meal') }}">Pre
                                     Workout
                                     Recipe</a>
 
@@ -69,14 +72,8 @@
             </div>
         </div>
     </div>
-
-    <!--search bar ends-->
-
-
-
-
-
 </div>
+<!--search-->
 
 
 
