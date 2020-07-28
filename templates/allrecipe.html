@@ -1,26 +1,121 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- Jumbotron -->
 
-<div class="jumbotron jumbotron-fluid" id="hero-recipe">
-    <div class="jumbo-screen text-center">
-        <div class="jumbo-content">
+<!-- Carousel -->
 
-            <!-- Content -->
-            <h2 class="jumbo-title">Recipes</h2>
-            <p class="jumbo-body">Muscle Made In The Kitchen</p>
+<div id="carouselFade" class="carousel bs-slider slide carousel-fade" data-ride="carousel">
 
-            <a class="btn btngradient" href="{{ url_for('add_recipe') }}" role="button" aria-expanded="false">
-                <img src="../static/images/recipe.png" class="img-fluid" alt="menu">
-                Add Recipe</a>
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carouselFade" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselFade" data-slide-to="1"></li>
+        <li data-target="#carouselFade" data-slide-to="2"></li>
+    </ol>
 
+    <!-- Wrapper For Slides -->
+    <div class="carousel-inner">
+
+        <!-- First Slide -->
+
+
+        <!-- Slide Background -->
+        <div class="carousel-item active">
+            <img src="../static/images/newfoodbowl.jpg" class="img-fluid" />
+            <div class="bs-slider-overlay"></div>
+
+            <div class="container">
+                <div class="row">
+                    <!-- Slide Text Layer -->
+                    <div class="slide-text slide_style_left">
+                        <h1 class="animate__animated animate__zoomInRight">Muscle Farm</h1>
+                        <p class="animate__animated animate__fadeInLeft">Muscle Made In The Kitchen.
+                        </p>
+                        <a href="" target="_blank"
+                            class="animate__animated animate__fadeInLeft btn btn-default border-gradient-green border-gradient">Read
+                            More</a>
+                        <a href="{{ url_for('add_recipe') }}"
+                            class="animate__animated animate__fadeInRight btn btngradient btn-animate" role="button"
+                            aria-expanded="false">
+                            <img src="../static/images/recipe.png" class="img-fluid" alt="menu">
+                            Add Recipe</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-    </div>
-</div>
-<!-- Jumbotron -->
-<div class="" id="menu">
+        <!-- End of Slide -->
 
+        <!-- Second Slide -->
+        <div class="carousel-item">
+            <!-- item -->
+
+            <!-- Slide Background -->
+            <img src="../static/images/newfood2.jpg" alt="Bootstrap Touch Slider d-block w-100" class="img-fluid" />
+            <div class="bs-slider-overlay"></div>
+            <!-- Slide Text Layer -->
+            <div class="slide-text slide_style_center">
+                <h1 class="animate__animated animate__flipInX">Simple, easy recipes!</h1>
+                <p class="animate__animated animate__lightSpeedIn">“You can have your cake and lose weight, too!”</p>
+                <a href="" target="_blank"
+                    class="animate__animated animate__fadeInLeft btn btn-default border-gradient-green border-gradient">Read
+                    More</a>
+                <a href="{{ url_for('add_recipe') }}"
+                    class="animate__animated animate__fadeInRight btn btngradient btn-animate" role="button"
+                    aria-expanded="false">
+                    <img src="../static/images/recipe.png" class="img-fluid" alt="menu">
+                    Add Recipe</a>
+            </div>
+        </div>
+        <!-- End of Slide -->
+
+        <!-- Third Slide -->
+        <div class="carousel-item">
+
+            <!-- Slide Background -->
+            <img src="../static/images/broccoli.jpg" alt="Bootstrap Touch Slider d-block w-100" class="img-fluid" />
+            <div class="bs-slider-overlay"></div>
+            <!-- Slide Text Layer -->
+            <div class="slide-text slide_style_right">
+                <h1 class="animate__animated animate__zoomInLeft">New Recipes!</h1>
+                <p class="animate__animated animate__fadeInRight">100 new, exclusive recipes that you can't get anywhere
+                    else.
+                </p>
+                <a href="" target="_blank"
+                    class="animate__animated animate__fadeInLeft btn btn-default border-gradient-green border-gradient">Read
+                    More</a>
+                <a href="{{ url_for('add_recipe') }}"
+                    class="animate__animated animate__fadeInRight btn btngradient btn-animate" role="button"
+                    aria-expanded="false">
+                    <img src="../static/images/recipe.png" class="img-fluid" alt="menu">
+                    Add Recipe</a>
+            </div>
+        </div>
+        <!-- End of Slide -->
+
+
+    </div>
+    <!-- End of Wrapper For Slides -->
+
+    <!-- Left Control -->
+    <a class="carousel-control-prev" href="#carouselFade" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+
+    <!-- Right Control -->
+    <a class="carousel-control-next" href="#carouselFade" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+
+</div>
+
+<!-- End  carouselFade Slider -->
+
+
+<!--search-->
+
+<div class="" id="menu">
     <div class="wrapper-search-bar">
         <div class="container border-gradient border-gradient-green">
             <div class="search-bar">
@@ -70,28 +165,22 @@
             </div>
         </div>
     </div>
-
-    <!--search bar ends-->
-
-
-
-
-
 </div>
+<!--search-->
 
 
 
 <!--- allrecipe -->
 
-<div class="container-fluid mb-5" id="allrecipe">
+<div class="container mb-5" id="allrecipe">
     <div class="category-title">
         <h2>{{ category_title }}</h2>
     </div>
     <div class="row">
         {% for recipe in recipe %}
-        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="card-deck">
-                <div class="card">
+                <div class="card animate__animated animate__flipInY">
                     <a href="{{url_for('get_recipe', recipe_id=recipe._id)}}">
                         <img class="card-img-top" src="{{ recipe.image }}" alt="">
                         <div class="card-body">
