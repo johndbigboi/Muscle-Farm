@@ -582,7 +582,6 @@ h4 {
     padding-right: 30px; */
     padding: 2px 20px;
     font-size: 1rem;
-    border-right: 5px solid #000000;
     -webkit-transition: background 0.5s ease-in-out,
         color 0.5s ease-in-out;
     transition: background 0.5s ease-in-out,
