@@ -23,47 +23,72 @@
 
 
 <!-- Recipe section -->
-<div class="recipe-card-body">
-    <div class="row no-gutters">
-        <div class="col-md-4">
+<div class="recipe-card mb-3">
+    <div class="container">
+        <div class="card-header">
+            <h3 class="card-title m-4">{{recipe.recipe_name}}</h3>
+        </div>
+        <div class="recipe-img">
             <img class="img-fluid" src="{{ recipe.image }}" alt="">
         </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">{{recipe.recipe_name}}</h5>
-                <h6 class="card-title">{{recipe.category_name}}</h6>
-                <p class="card-text">
-                    Ingredients:
-                <ul>
-                    {% for ingredient in recipe.ingredients %}
-                    <li>{{ ingredient }}</li>
-                    {% endfor %}
-                </ul>
-                Instructions:
-                <ol>
-                    {% for instruction in recipe.instructions %}
-                    <li>{{ instruction }}</li>
-                    {% endfor %}
-                </ol>
-                </p>
-            </div>
-        </div>
-    </div>
+        <div class="recipe-card-body">
 
-    <div class="recipebuttons mt-3">
-        <div class="row  mx-auto">
-            <a class="btn btn-primary" data-toggle="collapse" href="" role="button" aria-expanded="false">Add To
-                Dashboard</a>
-            <a class="btn btn-primary" href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" role="button"
-                aria-expanded="false">Edit</a>
-            <a class="btn btn-primary" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" role="button"
-                aria-expanded="false">
-                Delete Recipe</a>
-            <a class="btn btn-outline-info btn-rounded" href="{{ url_for('allrecipe', category='Recipes') }}"
-                role=" button" aria-expanded="false">
-                Close</a>
+            <div class="recipe-hud">
+                <h4 class="card-title m-4">{{recipe.category_name}}</h4>
+
+                <div class="row recipe-time mb-4">
+                    <div class="col-6 col-md-3 offset-md-3">
+                        <h6>Preparation Time:</h6>
+                        <p><i class="fas fa-clock" aria-hidden="true"></i> {{recipe.prep_time}}</p>
+                    </div>
+                    <div class=" col-6 col-md-3">
+                        <h6>Cooking Time:</h6>
+                        <p><i class="fas fa-clock" aria-hidden="true"></i> {{recipe.cook_time}}</p>
+                    </div>
+                </div>
+                <h5 class="card-title m-4">{{recipe.description}}</h5>
+            </div>
+            <p class="card-text">
+            <div class="card-text-title">
+                <p>Ingredients:</p>
+            </div>
+            <ul>
+                {% for ingredient in recipe.ingredients %}
+                <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+            <div class="card-text-title">
+                <p>Instructions:</p>
+            </div>
+            <ol>
+                {% for instruction in recipe.instructions %}
+                <li>{{ instruction }}</li>
+                {% endfor %}
+            </ol>
+            </p>
+        </div>
+
+        <div class="recipebuttons mt-3 ml-5">
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <a class="btn btn-recipe border-gradient-green border-gradient"
+                        href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" role="button"
+                        aria-expanded="false">Edit</a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="btn btn-recipe border-gradient-green border-gradient"
+                        href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" role="button" aria-expanded="false">
+                        Delete Recipe</a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="btn btn-recipe border-gradient-green border-gradient"
+                        href="{{ url_for('allrecipe', category='Recipes') }}" role=" button" aria-expanded="false">
+                        Close</a>
+                </li>
+            </ul>
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}
