@@ -2,13 +2,14 @@
 {% block content %}
 <!-- Jumbotron -->
 
-<div class="jumbotron jumbotron-fluid" id="hero-recipe">
-    <div class="jumbo-screen text-center">
-        <div class="jumbo-content">
+<div class="jumbotron jumbotron-fluid" id="recipe-view">
+    <div class="recipe-view-content d-flex text-center">
+
+        <div class="jumbo-content mx-auto text-center">
 
             <!-- Content -->
             <h2 class="jumbo-title">Recipes</h2>
-            <p class="jumbo-body">Muscle Made In The Kitchen</p>
+            <p class="jumbo-body">Health requires healthy food</p>
 
             <a class="btn btngradient" href="{{ url_for('add_recipe') }}" role="button" aria-expanded="false">
                 <img src="../static/images/recipe.png" class="img-fluid" alt="menu">
