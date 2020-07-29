@@ -354,7 +354,7 @@ h4 {
 /* main content */
 
 .main {
-    height: 90vh;
+    height: 100vh;
 }
 
 /* allRecipe */
@@ -901,7 +901,8 @@ h4 {
 }
 
 /* recipe from */
-.add-recipe {
+.add-recipe,
+.edit-recipe {
     background-image: url(../images/bg1.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -924,7 +925,7 @@ h4 {
 
 .recipe-form-body,
 .recipe-form-tables {
-    padding: 20px;
+    padding: 25px;
 }
 
 .recipe-form-tables tbody {
@@ -1089,7 +1090,7 @@ footer i {
     height: 50px; */
     text-align: center;
     color: #fff;
-    background: rgba(52, 58, 64, .5);
+    background-color: rgb(0, 141, 27, 0.5);
     line-height: 45px;
     font-size: 30px;
     padding: 0 10px;
