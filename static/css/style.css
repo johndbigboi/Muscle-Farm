@@ -650,6 +650,7 @@ h4 {
     background: linear-gradient(56deg, rgba(238, 225, 198, 1) 27%, rgba(0, 71, 27, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eee1c6", endColorstr="#00471b", GradientType=1);
     color: #000000;
+    border: none;
 }
 
 .btngradient img {
@@ -899,9 +900,51 @@ h4 {
     }
 }
 
-/* add recipe */
+/* recipe from */
+.add-recipe {
+    background-image: url(../images/bg1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    overflow: hidden;
+    padding: 10px;
+}
 
-/* tables */
+.recipe-form {
+    margin-top: 4rem;
+}
+
+.recipe-form-title {
+    padding: 20px;
+    width: 97%;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+
+.recipe-form-body,
+.recipe-form-tables {
+    padding: 20px;
+}
+
+.recipe-form-tables tbody {
+    text-align: center;
+}
+
+.table-body-title {
+    list-style: none;
+}
+
+.form-buttons {
+    width: 65%;
+    margin: 1rem auto;
+}
+
+.form-btn {
+    padding: .5rem 1rem;
+}
+
+/* recipe form tables */
 
 .table-wrapper {
     width: 700px;
