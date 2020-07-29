@@ -35,7 +35,7 @@ def allrecipe(category):
     else:
         recipe = mongo.db.recipes.find()
 
-    return render_template('allrecipe.html', recipe=recipe, category_title=category, recipes=mongo.db.recipes.find())
+    return render_template('allrecipe.html', recipe=recipe, category_title=category, recipes=mongo.db.recipes.find(), isFooter=True)
 
 # ---- SEARCH ----- #
 
@@ -43,7 +43,7 @@ def allrecipe(category):
 @app.route('/allrecipe/<recipe_name>')
 def searchname(recipe_name):
     mongo.db.recipes.find({"$text": {"$search": recipe_name}})
-    return render_template('allrecipe.html', name=recipe_name)
+    return render_template('allrecipe.html', name=recipe_name, isFooter=True)
 
 
 @app.route('/search', methods=["GET", "POST"])
@@ -54,22 +54,21 @@ def search():
     result_count = mongo.db.recipes.find(
         {"$text": {"$search": search}}).count()
     if result_count > 0:
-        return render_template("search.html", results=results, search=search)
+        return render_template("search.html", results=results, search=search, isFooter=True)
     else:
         flash("No results found. Please try again")
-        return render_template("search.html", results=results, search=search)
+        return render_template("search.html", results=results, search=search, isFooter=True)
 
 
 @app.route('/recipe/<recipe_id>')
 def get_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    post = mongo.db.post_recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("recipe.html", recipe=recipe, post=post)
+    return render_template("recipe.html", recipe=recipe, isFooter=True)
 
 
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('addrecipe.html', categories=mongo.db.categories.find())
+    return render_template('addrecipe.html', categories=mongo.db.categories.find(), isFooter=True)
 
 
 @app.route('/insert_recipe', methods=['POST'])
@@ -95,9 +94,9 @@ def insert_recipe():
         'ingredients': request.form.getlist('ingredients'),
         'instructions': request.form.getlist('instructions')
     }
-
+    flash("Thank you for submitting your recipe!")
     mongo.db.recipes.insert_one(recipe)
-    return render_template('allrecipe.html')
+    return render_template('allrecipe.html', isFooter=True)
 
 
 @app.route('/edit_recipe/<recipe_id>')
@@ -105,7 +104,7 @@ def edit_recipe(recipe_id):
     all_categories = mongo.db.categories.find()
     prerecipes = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
     return render_template('editrecipe.html',
-                           recipes=prerecipes, categories=all_categories)  # to do a find on the categories table.
+                           recipes=prerecipes, categories=all_categories, isFooter=True)  # to do a find on the categories table.
 
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
@@ -126,23 +125,26 @@ def update_recipe(recipe_id):
         'ingredients': request.form.getlist('ingredients'),
         'instructions': request.form.getlist('instructions')
     })
-    return render_template('allrecipe.html')
+
+    flash("Succesfully updated the recipe!")
+    return render_template('allrecipe.html', isFooter=True)
 
 
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
-    return render_template('allrecipe.html')
+    flash("Succesfully deleted the recipe!")
+    return render_template('allrecipe.html', isFooter=True)
 
 
 @app.route('/workouts')
 def workouts():
-    return render_template('workouts.html', categories=mongo.db.breathe.find(), workouts=mongo.db.workouts.find())
+    return render_template('workouts.html', categories=mongo.db.breathe.find(), workouts=mongo.db.workouts.find(), isFooter=True)
 
 
 @app.route('/relax')
 def relax():
-    return render_template('relax.html', categories=mongo.db.categories.find(), recipe=mongo.db.recipes.find())
+    return render_template('relax.html', categories=mongo.db.categories.find(), recipe=mongo.db.recipes.find(), isFooter=True)
 
 
 if __name__ == '__main__':
