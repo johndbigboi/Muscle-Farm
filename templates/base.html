@@ -32,18 +32,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto text-center">
                 <li class="nav-item active px-lg-2">
-                    <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard
+                    <a class="nav-link" href="{{ url_for('allrecipe', category='Recipes') }}">Recipes
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item px-lg-2">
-                    <a class="nav-link" href="{{ url_for('allrecipe', category='Recipes') }}">Recipes</a>
+                    <a class="nav-link" href="{{ url_for('add_recipe') }}">Submit Recipe</a>
                 </li>
                 <li class="nav-item px-lg-2">
                     <a class="nav-link" href="{{ url_for('workouts') }}">Workouts</a>
                 </li>
                 <li class="nav-item px-lg-2">
-                    <a class="nav-link" href="{{ url_for('relax') }}">Relax</a>
+                    <a class="nav-link" href="{{ url_for('dashboard') }}"> Dashboard Relax</a>
                 </li>
                 <li class="nav-item px-lg-2">
                     <a class="nav-link" href="store.html">Login In</a>
