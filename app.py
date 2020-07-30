@@ -1,9 +1,10 @@
 import os
 if os.path.exists("env.py"):
     import env
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, render_template, redirect, request, url_for, session, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import bcrypt
 
 app = Flask(__name__)
 
@@ -17,7 +18,66 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html', recipes=mongo.db.recipes.find(), workouts=mongo.db.workouts.find())
+    return render_template('index.html', isNav=True)
+
+
+# Register Account page
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    """
+    Create new user and insert into the database for account registration
+    """
+    if request.method == 'POST':
+        existing_user = mongo.db.users.find_one(
+            {'username': request.form['username']})
+        password = request.form['password']
+        repeat_password = request.form['repeat_password']
+
+        # check if the username matches username in the database
+        if existing_user:
+            flash("Username already exists! Please try again.")
+            return redirect(url_for('register'))
+
+        # check passwords is equal then will insert the new user
+        if password == repeat_password:
+            password_hashpass = bcrypt.hashpw(
+                request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            register = {
+                "email": request.form.get("email").lower(),
+                "username": request.form.get("username").lower(),
+                "password": password_hashpass
+            }
+            mongo.db.users.insert_one(register)
+
+            session["user"] = request.form.get("username").lower()
+            flash("Welcome! Thank you for registering, you can now access all the recipes and you can submit your favourite recipe! enjoy!")
+            return render_template('allrecipe.html', username=session["user"], isFooter=True)
+
+        flash('The passwords dont match.')
+        return redirect(url_for('register'))
+
+    return render_template('register.html', categories=mongo.db.categories.find(), isFooter=True, isNav=True)
+
+
+# Sign-in/login page
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == 'POST':
+        user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if user:
+            password = bcrypt.hashpw(request.form['password'].encode('utf-8'),
+                                     user['password'])
+            if password == user['password']:
+                session['username'] = request.form.get("username").lower()
+                flash("Welcome back!")
+                return render_template('allrecipe.html', username=session["user"], isFooter=True)
+
+            flash("Incorrect Username and/or Password!")
+            return redirect(url_for("login", isFooter=True))
+
+    return render_template('login.html', isFooter=True)
 
 
 @app.route('/dashboard')
