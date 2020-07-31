@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'layout/base.html' %}
 {% block content %}
 <!-- Jumbotron -->
 
@@ -51,20 +51,20 @@
                         <ul class="list-inline text-center menu-item">
                             <li class="list-inline-item">
                                 <a class="menu-links menu-item-border"
-                                    href="{{ url_for('allrecipe', category='All Recipe') }}">All
+                                    href="{{ url_for('recipes', category='All Recipe') }}">All
                                     Recipe</a>
 
                             </li>
                             <li class="list-inline-item">
                                 <a class="menu-links menu-item-border"
-                                    href="{{ url_for('allrecipe', category='Pre Workout Meal') }}">Pre
+                                    href="{{ url_for('recipes', category='Pre Workout Meal') }}">Pre
                                     Workout
                                     Recipe</a>
 
                             </li>
                             <li class="list-inline-item">
-                                <a class="menu-links"
-                                    href="{{ url_for('allrecipe', category='Post Workout Meal') }}">Post Workout
+                                <a class="menu-links" href="{{ url_for('recipes', category='Post Workout Meal') }}">Post
+                                    Workout
                                     Recipe</a>
                             </li>
                         </ul>
@@ -78,7 +78,7 @@
 
 
 
-<!--- allrecipe -->
+<!--- allrecipes -->
 
 <div class="container-fluid mb-5" id="allrecipe">
     <div class="search-title">Search Results:</div>
