@@ -20,6 +20,7 @@
 
 <body id="page-top">
     <!-- Navigation-->
+    {% if not isNav%}
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <a class="navbar-brand js-scroll-trigger" href="{{ url_for('index') }}">
             <img src="../static/images/broccoli-icon.png" class="d-inline-block align-top text-white" alt="menu"> Muscle
@@ -46,12 +47,12 @@
                     <a class="nav-link" href="{{ url_for('dashboard') }}"> Dashboard Relax</a>
                 </li>
                 <li class="nav-item px-lg-2">
-                    <a class="nav-link" href="store.html">Login In</a>
+                    <a class="nav-link" href="{{ url_for('logout') }}">logout <i class="fas fa-sign-out-alt"></i></a>
                 </li>
             </ul>
         </div>
     </nav>
-
+    {% endif %}
     <!-- Main Content -->
 
     {% block content %}
