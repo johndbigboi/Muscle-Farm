@@ -172,7 +172,9 @@
         {% if messages %}
         {% for message in messages %}
 
-        <h2>{{ message }}</h2>
+        <h2>
+            <firstletter>{{ username }}</firstletter>, {{ message }}
+        </h2>
 
         {% endfor %}
 
