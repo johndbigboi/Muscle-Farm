@@ -74,7 +74,7 @@ def login():
                 flash(", great to have you back!")
                 return render_template('allrecipe.html', username=session["username"], isFooter=True)
 
-            flash("Incorrect Username and/or Password!")
+            flash("Incorrect Username or Password!")
             return redirect(url_for("login", isFooter=True))
 
     return render_template('login.html', isFooter=True, isNav=True)
@@ -107,7 +107,7 @@ def recipes(category):
 # ---- SEARCH ----- #
 
 
-@app.route('/allrecipe/<recipe_name>')
+@app.route('/search/<recipe_name>')
 def searchname(recipe_name):
     mongo.db.recipes.find({"$text": {"$search": recipe_name}})
     return render_template('allrecipe.html', name=recipe_name, isFooter=True)
@@ -133,12 +133,12 @@ def get_recipe(recipe_id):
     return render_template("recipe.html", recipe=recipe, isFooter=True)
 
 
-@app.route('/add_recipe')
+@app.route('/recipe/add')
 def add_recipe():
     return render_template('addrecipe.html', categories=mongo.db.categories.find(), isFooter=True)
 
 
-@app.route('/insert_recipe', methods=['POST'])
+@app.route('/recipe/insert', methods=['POST'])
 def insert_recipe():
     """
     ingredients_doc = {'ingredient': request.form.getlist(
@@ -166,7 +166,7 @@ def insert_recipe():
     return render_template('allrecipe.html', isFooter=True)
 
 
-@app.route('/edit_recipe/<recipe_id>')
+@app.route('/recipe/edit/<recipe_id>')
 def edit_recipe(recipe_id):
     all_categories = mongo.db.categories.find()
     prerecipes = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
@@ -174,7 +174,7 @@ def edit_recipe(recipe_id):
                            recipes=prerecipes, categories=all_categories, isFooter=True)  # to do a find on the categories table.
 
 
-@app.route('/update_recipe/<recipe_id>', methods=['POST'])
+@app.route('/recipe/update/<recipe_id>', methods=['POST'])
 # We pass in the task ID because that's our hook into the primary key.
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
@@ -197,7 +197,7 @@ def update_recipe(recipe_id):
     return render_template('allrecipe.html', isFooter=True)
 
 
-@app.route('/delete_recipe/<recipe_id>')
+@app.route('/recipe/delete/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     flash("Succesfully deleted the recipe!")
