@@ -349,13 +349,34 @@ h4 {
     }
 } */
 
-/* main content */
-
 .main {
     height: 100vh;
+
 }
 
-/* allRecipe */
+/* Register content */
+
+.register .register-form {
+    padding: 15px;
+
+}
+
+.register-body {
+    background-image: none;
+    color: black;
+}
+
+.register-body form {
+    padding: 20px;
+}
+
+.register-body form .form-control {
+    padding: 20px;
+    border: 1px solid #00471b;
+}
+
+
+/* allRecipe content */
 
 
 #hero-recipe {
