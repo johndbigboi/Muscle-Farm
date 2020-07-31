@@ -9,7 +9,7 @@ import bcrypt
 app = Flask(__name__)
 
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.config["MONGO_DBNAME"] = 'breathe'
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 
@@ -50,7 +50,7 @@ def register():
             mongo.db.users.insert_one(register)
 
             session["username"] = request.form.get("username").lower()
-            flash("thank you for registering! you can now access all the recipes and you can submit your favourite recipe! enjoy!")
+            flash(", thank you for registering! you can now access all the recipes and you can submit your favourite recipe! enjoy!")
             return render_template('allrecipe.html', username=session["username"])
 
         flash('The passwords dont match.')
@@ -71,7 +71,7 @@ def login():
                                      user['password'])
             if password == user['password']:
                 session['username'] = request.form.get("username").lower()
-                flash("great to have you back!")
+                flash(", great to have you back!")
                 return render_template('allrecipe.html', username=session["username"], isFooter=True)
 
             flash("Incorrect Username and/or Password!")
@@ -81,19 +81,19 @@ def login():
 
 
 # logout route
-@ app.route('/logout')
+@app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for("index",  isNav=True))
 
 
-@app.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html', recipes=mongo.db.recipes.find(), workouts=mongo.db.workouts.find())
+@app.route('/about')
+def about():
+    return render_template('about.html', recipes=mongo.db.recipes.find(), workouts=mongo.db.workouts.find())
 
 
-@app.route('/allrecipe/<category>')
-def allrecipe(category):
+@app.route('/recipes/<category>')
+def recipes(category):
     # if statements to display the recipes base on category name
     if category == "Pre Workout Meal":
         recipe = mongo.db.recipes.find({"category_name": "Pre Workout Meal"})
@@ -209,18 +209,8 @@ def workouts():
     return render_template('workouts.html', categories=mongo.db.breathe.find(), workouts=mongo.db.workouts.find(), isFooter=True)
 
 
-@app.route('/relax')
-def relax():
-    return render_template('relax.html', categories=mongo.db.categories.find(), recipe=mongo.db.recipes.find(), isFooter=True)
-
-
 if __name__ == '__main__':
 
     app.run(host=os.environ.get('IP', '0.0.0.0'),
             port=int(os.environ.get('PORT', '5000')),
-            debug=True)
-    """
-    app.run(host=os.environ.get('IP', '127.0.0.1'),
-            port=int(os.environ.get('PORT', '8080')),
-            debug=True)
-"""
+            debug=os.environ.get("DEBUG"))
