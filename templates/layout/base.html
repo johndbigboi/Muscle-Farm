@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'layout/head.html' %}
+</head>
+{% include 'components/header-nav.html' %}
+
+<body id="page-top">
+
+    {% block content %}
+    {% endblock %}
+    {% include 'components/footer.html' %}
+
+    {% include 'layout/scripts.html' %}
+</body>
+
+</html>
