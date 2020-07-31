@@ -51,12 +51,12 @@ def register():
 
             session["username"] = request.form.get("username").lower()
             flash("thank you for registering! you can now access all the recipes and you can submit your favourite recipe! enjoy!")
-            return render_template('allrecipe.html', username=session["username"], isFooter=True)
+            return render_template('allrecipe.html', username=session["username"])
 
         flash('The passwords dont match.')
         return redirect(url_for('register'))
 
-    return render_template('register.html', categories=mongo.db.categories.find(), isFooter=True, isNav=True)
+    return render_template('register.html', categories=mongo.db.categories.find(), isNav=True)
 
 
 # Sign-in/login page
