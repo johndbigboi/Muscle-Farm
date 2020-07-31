@@ -49,9 +49,9 @@ def register():
             }
             mongo.db.users.insert_one(register)
 
-            session["user"] = request.form.get("username").lower()
-            flash("Welcome! Thank you for registering, you can now access all the recipes and you can submit your favourite recipe! enjoy!")
-            return render_template('allrecipe.html', username=session["user"], isFooter=True)
+            session["username"] = request.form.get("username").lower()
+            flash("thank you for registering! you can now access all the recipes and you can submit your favourite recipe! enjoy!")
+            return render_template('allrecipe.html', username=session["username"], isFooter=True)
 
         flash('The passwords dont match.')
         return redirect(url_for('register'))
@@ -71,13 +71,20 @@ def login():
                                      user['password'])
             if password == user['password']:
                 session['username'] = request.form.get("username").lower()
-                flash("Welcome back!")
-                return render_template('allrecipe.html', username=session["user"], isFooter=True)
+                flash("great to have you back!")
+                return render_template('allrecipe.html', username=session["username"], isFooter=True)
 
             flash("Incorrect Username and/or Password!")
             return redirect(url_for("login", isFooter=True))
 
-    return render_template('login.html', isFooter=True)
+    return render_template('login.html', isFooter=True, isNav=True)
+
+
+# logout route
+@ app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for("index",  isNav=True))
 
 
 @app.route('/dashboard')
