@@ -322,8 +322,6 @@ h4 {
 
 .hero-title a {
     color: #fff;
-    background-color: #0076C1;
-    border-color: #004614;
 }
 
 /* @media (min-width: 768px) {
@@ -612,6 +610,10 @@ h4 {
     color: rgba(0, 141, 27, 0.1);
     margin: 1rem;
 
+}
+
+.category-title h2::first-letter {
+    text-transform: uppercase;
 }
 
 #allrecipe .search-title {
