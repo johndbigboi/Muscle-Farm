@@ -104,15 +104,8 @@ def recipes(category):
 
     return render_template('allrecipe.html', recipe=recipe, category_title=category, recipes=mongo.db.recipes.find(), isFooter=True)
 
+
 # ---- SEARCH ----- #
-
-
-@app.route('/search/<recipe_name>')
-def searchname(recipe_name):
-    mongo.db.recipes.find({"$text": {"$search": recipe_name}})
-    return render_template('allrecipe.html', name=recipe_name, isFooter=True)
-
-
 @app.route('/search', methods=["GET", "POST"])
 def search():
 
@@ -123,23 +116,12 @@ def search():
     if result_count > 0:
         return render_template("search.html", results=results, search=search, isFooter=True)
     else:
-        flash("No results found. Please try again")
+        flash("No results found.")
         return render_template("search.html", results=results, search=search, isFooter=True)
 
 
-@app.route('/recipe/<recipe_id>')
-def get_recipe(recipe_id):
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("recipe.html", recipe=recipe, isFooter=True)
-
-
-@app.route('/recipe/add')
+@app.route('/recipe/add', methods=['GET', 'POST'])
 def add_recipe():
-    return render_template('addrecipe.html', categories=mongo.db.categories.find(), isFooter=True)
-
-
-@app.route('/recipe/insert', methods=['POST'])
-def insert_recipe():
     """
     ingredients_doc = {'ingredient': request.form.getlist(
         'ingredients[]')}  # send form to dictionary
@@ -150,51 +132,58 @@ def insert_recipe():
     recipe.insert_one(request.form.to_dict())  # send form to dictionary
     # go to the task.html after sending form
     """
+    if request.method == "POST":
+        recipe = {
+            'recipe_name': request.form.get('recipe_name'),
+            'category_name': request.form.get('category_name'),
+            'description': request.form.get('description'),
+            'image': request.form.get('image'),
+            'prep_time': request.form.get('prep_time'),
+            'cook_time': request.form.get('cook_time'),
+            'ingredients': request.form.getlist('ingredients'),
+            'instructions': request.form.getlist('instructions')
+        }
+        flash("Thank you for submitting your recipe!")
+        mongo.db.recipes.insert_one(recipe)
+        return render_template('allrecipe.html', isFooter=True)
 
-    recipe = {
-        'recipe_name': request.form.get('recipe_name'),
-        'category_name': request.form.get('category_name'),
-        'description': request.form.get('description'),
-        'image': request.form.get('image'),
-        'prep_time': request.form.get('prep_time'),
-        'cook_time': request.form.get('cook_time'),
-        'ingredients': request.form.getlist('ingredients'),
-        'instructions': request.form.getlist('instructions')
-    }
-    flash("Thank you for submitting your recipe!")
-    mongo.db.recipes.insert_one(recipe)
-    return render_template('allrecipe.html', isFooter=True)
+    return render_template('addrecipe.html', categories=mongo.db.categories.find(), isFooter=True)
 
 
-@app.route('/recipe/edit/<recipe_id>')
-def edit_recipe(recipe_id):
+@app.route('/recipe/<recipe_id>')
+def get_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("recipe.html", recipe=recipe, isFooter=True)
+
+
+@app.route('/recipe/edit/<recipe_id>', methods=['GET', 'POST'])
+# We pass in the task ID because that's our hook into the primary key.
+def update_recipe(recipe_id):
+
+    if request.method == "POST":
+        recipes = mongo.db.recipes
+        """ So what we do is we access the tasks collection.
+        Then we call the update function.We specify the ID.
+        That's our key to uniqueness."""
+        recipes.update({'_id': ObjectId(recipe_id)},
+                       {
+            'recipe_name': request.form.get('recipe_name'),
+            'category_name': request.form.get('category_name'),
+            'description': request.form.get('description'),
+            'image': request.form.get('image'),
+            'prep_time': request.form.get('prep_time'),
+            'cook_time': request.form.get('cook_time'),
+            'ingredients': request.form.getlist('ingredients'),
+            'instructions': request.form.getlist('instructions')
+        })
+
+        flash("Succesfully updated the recipe!")
+        return render_template('allrecipe.html', isFooter=True)
+
     all_categories = mongo.db.categories.find()
     prerecipes = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
     return render_template('editrecipe.html',
                            recipes=prerecipes, categories=all_categories, isFooter=True)  # to do a find on the categories table.
-
-
-@app.route('/recipe/update/<recipe_id>', methods=['POST'])
-# We pass in the task ID because that's our hook into the primary key.
-def update_recipe(recipe_id):
-    recipes = mongo.db.recipes
-    """ So what we do is we access the tasks collection.
-    Then we call the update function.We specify the ID.
-    That's our key to uniqueness."""
-    recipes.update({'_id': ObjectId(recipe_id)},
-                   {
-        'recipe_name': request.form.get('recipe_name'),
-        'category_name': request.form.get('category_name'),
-        'description': request.form.get('description'),
-        'image': request.form.get('image'),
-        'prep_time': request.form.get('prep_time'),
-        'cook_time': request.form.get('cook_time'),
-        'ingredients': request.form.getlist('ingredients'),
-        'instructions': request.form.getlist('instructions')
-    })
-
-    flash("Succesfully updated the recipe!")
-    return render_template('allrecipe.html', isFooter=True)
 
 
 @app.route('/recipe/delete/<recipe_id>')
