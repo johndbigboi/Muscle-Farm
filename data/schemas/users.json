@@ -1,0 +1,6 @@
+[{
+    "_id": "<ObjectId()>",
+    "email": "<string>",
+    "username": "<string>",
+    "password": "<binary_hashed_string>"
+}]

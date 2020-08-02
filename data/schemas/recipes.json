@@ -1,0 +1,11 @@
+[{
+    "_id": "<ObjectId()> ",
+    "recipe_name": "<string>",
+    "category_name": "<string>",
+    "description": "<string>",
+    "image": "<string>",
+    "prep_time": "<string>",
+    "cook_time": "<string>",
+    "ingredients": "<Array>",
+    "instructions": "<Array>"
+}]
