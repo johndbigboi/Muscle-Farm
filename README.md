@@ -281,51 +281,51 @@ As I planned and developed this website using Python and mongoDB database, I pla
 
 <strong>Register an account,login & logout:</strong>
 
-* <strong>Plan</strong> :📝 The user needs to register first to enter the website to have full access of all recipes and be able to submit, edit and delete recipes. User needs email, username and password to register. for password stored in the database it needs to be properly hash for safety feature.
+* <strong>Plan: 📝</strong>  The user needs to register first to enter the website to have full access of all recipes and be able to submit, edit and delete recipes. User needs email, username and password to register. for password stored in the database it needs to be properly hash for safety feature.
 
-* <strong>Implementation</strong> :🏭 The user registers email should be in the proper format. Usernames will be check if had a duplicate within the database, using flash message to alert if its already exist. password need to match the repeat password. Upon passing all the required field all will be stored in the database. From the Python Libraries, need to import <strong>session</strong> for the user login and <strong>bcrypt</strong> for passwords.
+* <strong>Implementation: 🏭</strong>  The user registers email should be in the proper format. Usernames will be check if had a duplicate within the database, using flash message to alert if its already exist. password need to match the repeat password. Upon passing all the required field all will be stored in the database. From the Python Libraries, need to import <strong>session</strong> for the user login and <strong>bcrypt</strong> for passwords.
 
-* <strong>Test</strong> :🧪 To test this feature, i had to create several accounts in order to test the registration process as planned, checking the values were passed & stored in the database. Using the registered account, by logging in and out are succesfully.
+* <strong>Test: 🧪</strong> To test this feature, i had to create several accounts in order to test the registration process as planned, checking the values were passed & stored in the database. Using the registered account, by logging in and out are succesfully.
 
-* <strong>Result</strong> :🏆The test passed as the created test user accounts stored in the database with encrypted passwords and the user can login and log out into session without problems.
+* <strong>Result: 🏆</strong> The test passed as the created test user accounts stored in the database with encrypted passwords and the user can login and log out into session without problems.
 
-* <strong>Verdict</strong> :✅ This test has passed based on the above criteria and notes.
+* <strong>Verdict: ✅</strong>  This test has passed based on the above criteria and notes.
 
 <strong>Search menu and recipe's category filter:</strong>
 
-* <strong>Plan</strong> :📝 The user can use the search menu to search by recipe name or use the category menu to filter recipes by categories. By using flash, a message will alert the user if no recipe exist in the database. 
+* <strong>Plan: 📝</strong>  The user can use the search menu to search by recipe name or use the category menu to filter recipes by categories. By using flash, a message will alert the user if no recipe exist in the database. 
 
-* <strong>Implementation</strong> :🏭 To implement this feature, i need to use the "Get" and "Post" method to access the database to search for recipes name. To filter categories, i need to use conditional if statements and using "mongo.db.collection.find" to target ({"category_name": "category_name"}). If the search is unsuccessful, a flash message will alert the user "No results found."
+* <strong>Implementation: 🏭</strong>  To implement this feature, i need to use the "Get" and "Post" method to access the database to search for recipes name. To filter categories, i need to use conditional if statements and using "mongo.db.collection.find" to target ({"category_name": "category_name"}). If the search is unsuccessful, a flash message will alert the user "No results found."
 
-* <strong>Test</strong> :🧪 To test this feature, i searched each recipe either by a letter or by the full name of the recipe.
+* <strong>Test: 🧪</strong>  To test this feature, i searched each recipe either by a letter or by the full name of the recipe.
 
-* <strong>Result</strong> :🏆 The test passed for every search made.
+* <strong>Result: 🏆</strong>  The test passed for every search made.
 
-* <strong>Verdict</strong> :✅ This test has passed based on the above criteria and notes.
+* <strong>Verdict: ✅</strong>  This test has passed based on the above criteria and notes.
 
 <strong>User access to submit,edit and delete recipes:</strong>
 
-* <strong>Plan</strong> :📝 This feature is largely the main focus in terms of demonstrating CRUD functionality. The user needs to login first before they can access the function of submitting, editing and deleting recipes.
+* <strong>Plan: 📝</strong>  This feature is largely the main focus in terms of demonstrating CRUD functionality. The user needs to login first before they can access the function of submitting, editing and deleting recipes.
 
-* <strong>Implementation</strong>: 🏭 To implement this feature, I need to create 3 routes for each step within the CRUD operation. For Submitting and editing a recipe i need to use the "Get" and "Post" method and using conditional If statements. For deleting a recipe i need to use mongo.db.collection.remove. All the 3 routes have a feedback message to inform the user.
+* <strong>Implementation: 🏭</strong> To implement this feature, I need to create 3 routes for each step within the CRUD operation. For Submitting and editing a recipe i need to use the "Get" and "Post" method and using conditional If statements. For deleting a recipe i need to use mongo.db.collection.remove. All the 3 routes have a feedback message to inform the user.
 
-* <strong>Test</strong> :🧪 To test this feature, i created few test recipes which i submitted, edited and deleted.
+* <strong>Test: 🧪</strong>  To test this feature, i created few test recipes which i submitted, edited and deleted.
 
-* <strong>Result</strong> :🏆 The test passed for every CRUD operation i did and the database was updated accordingly.
+* <strong>Result: 🏆</strong>  The test passed for every CRUD operation i did and the database was updated accordingly.
 
-* <strong>Verdict</strong> :✅ This test has passed based on the above criteria and notes.
+* <strong>Verdict: ✅</strong> This test has passed based on the above criteria and notes.
 
 <strong>Recipe forms for Submitting and Editing:</strong>
 
-* <strong>Plan</strong> :📝 I needed to create a page with a form that will either submit or edit the recipe, has a table form for ingredients and instruction. prevents to submit the form if the fields are empty.
+* <strong>Plan: 📝</strong>  I needed to create a page with a form that will either submit or edit the recipe, has a table form for ingredients and instruction. prevents to submit the form if the fields are empty.
 
-* <strong>Implementation</strong> :🏭 To implement this feature, i used bootstrap form with validation. The table form for ingredients and instruction, i used Jquery that will add additional lines for more text space and Jinja for the required values and names to update the database.
+* <strong>Implementation: 🏭</strong> To implement this feature, i used bootstrap form with validation. The table form for ingredients and instruction, i used Jquery that will add additional lines for more text space and Jinja for the required values and names to update the database.
 
-* <strong>Test</strong> :🧪 To test this feature, i created few test recipe which i submitted, edited and deleted.
+* <strong>Test: 🧪</strong>  To test this feature, i created few test recipe which i submitted, edited and deleted.
 
-* <strong>Result</strong> :🏆 The test passed for every CRUD operation i did and the database was updated accordingly.
+* <strong>Result: 🏆</strong> The test passed for every CRUD operation i did and the database was updated accordingly.
 
-* <strong>Verdict</strong> :✅ This test has passed based on the above criteria and notes.
+* <strong>Verdict: ✅</strong> This test has passed based on the above criteria and notes.
 
 
 ### Validators and linters:
@@ -461,6 +461,6 @@ longer to find solutions and fixes.
 
 ## Disclaimer:📃
 
-Muscle Farm is developed for educational purposes only 2020, and is not intended for use in any other capacity.
+Muscle Farm is developed for educational purposes only, and is not intended for use in any other capacity.
 
 [Back to top ↑](#muscle-farm)
