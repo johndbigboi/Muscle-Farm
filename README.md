@@ -3,7 +3,7 @@
 
 [The live site can be viewed here](https://dashboard.heroku.com/apps/muscle-farm/deploy/github)
 
-![Mutli Device Screenshot](https://github.com/johndbigboi/MoneyHeist-QuizGame/blob/master/wireframes/multidevice.png)
+![Mutli Device Screenshot](https://github.com/johndbigboi/Muscle-Farm/blob/master/static/images/Multi-device.png)
 
 
 Welcome to Muscle Farm, a recipe website dedicated for fitness fanatic who loves cooking. Wondering what to eat before or after a workout? Muscle Farm answers your problem with a wide range of healthy recipes where you can add, edit and delete recipes.
@@ -144,14 +144,14 @@ I used [this](https://coolors.co/fefefe-eee1c6-00471b-050100) colour palette fro
 
 #### #eee1c6(Champagne):
 
-![##eee1c6](https://via.placeholder.com/15/#eee1c6/000000?text=+) `##eee1c6`
+![#eee1c6](https://via.placeholder.com/15/#eee1c6/000000?text=+) `##eee1c6`
 - Font colour of the Navbar.
 - Background colour of all search bar.
 - Background colour of buttons.
 
 #### #00471B(Forest Green Tradition):
 
-![#f00471B](https://via.placeholder.com/15/#00471B/000000?text=+) `#00471B`
+![#00471B](https://via.placeholder.com/15/#00471B/000000?text=+) `#00471B`
 - Font colour of the Title.
 - colour of the border.
 
