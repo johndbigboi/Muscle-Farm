@@ -144,14 +144,14 @@ I used [this](https://coolors.co/fefefe-eee1c6-00471b-050100) colour palette fro
 
 #### #eee1c6(Champagne):
 
-![#eee1c6](https://via.placeholder.com/15/#eee1c6/000000?text=+) `##eee1c6`
+![#eee1c6](https://via.placeholder.com/15/eee1c6/000000?text=+) `#eee1c6`
 * Font colour of the Navbar.
 * Background colour of all search bar.
 * Background colour of buttons.
 
 #### #00471B(Forest Green Tradition):
 
-![#00471B](https://via.placeholder.com/15/#00471B/000000?text=+) `#00471B`
+![#00471B](https://via.placeholder.com/15/00471b/000000?text=+) `#00471B`
 * Font colour of the Title.
 * colour of the border.
 
