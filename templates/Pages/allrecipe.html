@@ -106,11 +106,11 @@
     </a>
 
 </div>
-<!-- End  carouselFade Slider -->
+<!-- End  carousel -->
 
 
 <!--search-->
-<div class="" id="menu">
+<div class="search-box-menu" id="menu">
     <div class="wrapper-search-bar">
         <div class="container border-gradient border-gradient-green">
             <div class="search-bar">
@@ -123,7 +123,7 @@
                                     <label for="search-slider">
                                         <input type="search" id="search-slider" placeholder="keyword" name="search"
                                             id="search" type="text">
-                                        <button type="submit" name="search" value="search">
+                                        <button type="submit" name="search" value="search" target="#allrecipe">
                                             <i class="fa fa-search"></i></button>
                                     </label>
                                 </div>
@@ -163,16 +163,17 @@
 </div>
 <!--search-->
 
-<!--- allrecipes -->
+<!--- recipes  -->
 
 <div class="container mb-5" id="allrecipe">
     <div class="category-title">
+
         <h2>{{ category_title }}</h2>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for message in messages %}
-
-        <h2>
+        <div class="search-title">Search Results:</div>
+        <h2 class="message mt-4 mb-5">
             <firstletter>{{ username }}</firstletter>{{ message }}
         </h2>
 
@@ -182,6 +183,7 @@
         {% endwith %}
     </div>
     <div class="row">
+        <!-- for all recipes cards -->
         {% for recipe in recipe %}
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="card-deck">
@@ -195,6 +197,28 @@
                                 <p class="card-text">
                                     <small><i class="fas fa-clock" aria-hidden="true"></i>
                                         {{recipe.prep_time}}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- for search result -->
+        {% for result in results %}
+        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="card-deck">
+                <div class="card">
+                    <a href="{{url_for('get_recipe', recipe_id=result._id)}}">
+                        <img class="card-img-top" src="{{ result.image }}" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{result.recipe_name}}</h5>
+                            <p class="card-text">{{result.category_name}}</p>
+                            <div class="card-footer">
+                                <p class="card-text">
+                                    <small><i class="fas fa-clock" aria-hidden="true"></i>
+                                        {{result.prep_time}}</small>
                                 </p>
                             </div>
                         </div>
