@@ -145,32 +145,32 @@ I used [this](https://coolors.co/fefefe-eee1c6-00471b-050100) colour palette fro
 #### #eee1c6(Champagne):
 
 ![#eee1c6](https://via.placeholder.com/15/#eee1c6/000000?text=+) `##eee1c6`
-- Font colour of the Navbar.
-- Background colour of all search bar.
-- Background colour of buttons.
+* Font colour of the Navbar.
+* Background colour of all search bar.
+* Background colour of buttons.
 
 #### #00471B(Forest Green Tradition):
 
 ![#00471B](https://via.placeholder.com/15/#00471B/000000?text=+) `#00471B`
-- Font colour of the Title.
-- colour of the border.
+* Font colour of the Title.
+* colour of the border.
 
 
 #### #050100(Rich Black):
 
 ![#050100](https://via.placeholder.com/15/050100/000000?text=+) `#050100`
-- Font colour of the forms.
-- Font colour of the search box.
-- Font colour of the recipe.
-- Background colour Navbar.
-- Background colour Overlay.
+* Font colour of the forms.
+* Font colour of the search box.
+* Font colour of the recipe.
+* Background colour Navbar.
+* Background colour Overlay.
 
 
 #### #fefefe(White):
 
 ![#fefefe](https://via.placeholder.com/15/fefefe/000000?text=+) `#fefefe`
-- Background colour of pages.
-- Background colour of forms.
+* Background colour of pages.
+* Background colour of forms.
 
 #### Defensive design:
 
