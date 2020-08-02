@@ -220,7 +220,7 @@ Username|username|String
 Password|password|Binary
 
 
-View the schema templates for the database collections <a href="https://github.com/">here.</a>
+View the schema templates for the database collections [here.](https://github.com/johndbigboi/Muscle-Farm/tree/master/data/schemas)
 
 
 ## Features: 🎡
@@ -264,7 +264,7 @@ View the schema templates for the database collections <a href="https://github.c
 * [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
 * [jQuery](https://jquery.com/)
 * [Git](https://git-scm.com/)
-* [Bootstrap](https://getbootstrap.com/)
+* [Bootstrap 4.5](https://getbootstrap.com/)
 * [Font-Awesome](https://fontawesome.com/icons?d=gallery)
 * [Animate.css](https://animate.style/)
 * [CSS Gradient](https://cssgradient.io/)
