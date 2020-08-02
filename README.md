@@ -140,7 +140,7 @@ All background and images were taken from [freepick](https://www.freepik.com/) a
 
 I used [this](https://coolors.co/fefefe-eee1c6-00471b-050100) colour palette from coolors.co. 
 
-![]()
+![color palette](https://github.com/johndbigboi/Muscle-Farm/blob/master/static/images/color-palette.png)
 
 #### #eee1c6(Champagne):
 
