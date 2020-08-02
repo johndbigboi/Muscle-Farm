@@ -1,5 +1,5 @@
 
-# [Muscle Farm](https://dashboard.heroku.com/apps/muscle-farm/deploy/github)
+# Muscle Farm
 
 [The live site can be viewed here](https://dashboard.heroku.com/apps/muscle-farm/deploy/github)
 
@@ -95,21 +95,21 @@ As a User I would like to:
 #### Site Owner Goals:
 
 Maintaining to be fit and whilst enjoying eating is a very difficult thing to do. the hardest part is choosing what to eat  
-before and after your training that will give you energy through out the day and still have some space for your favorite desserts.
+before and after your training that will give you energy throughout the day and still have some space for your favorite desserts.
 
 * Highlighting the Pre and post workout meal is the most important fuel during training. 
 * Spreading the awarness with nutrition is the most important part of fitness.
 * Health enthusiast can share their favourite recipes.
-* Easy access to all the recipes.
+* Simple UI and easy to use website to access all the recipes.
 
-## User Requirements and Expectations:
+## User Requirements and Expectations: 🎯
 
 #### Requirements:
 
-*  Navigate the website with ease & with fast load times.
+*  Navigate the website with ease, and with fast loading time.
 *  Search functionality for Pre and post workouts recipe.
 *  Provide a simple and easy to use online recipes.
-*  User can browse, post, edit and delete recipes
+*  User can browse, submit, edit and delete recipes
 *  Interact with a visually appealing website.
 
 ##### Expectations:
@@ -118,7 +118,7 @@ before and after your training that will give you energy through out the day and
 * The website loads with sufficient speed.
 * The content on the website renders correctly on desktop, mobile and tablet.
 * Content is visually satisfying and informative.
-* The users feel informed and satisfied with the informaton available.
+* The user feel informed and satisfied with the informaton available.
 
 
 ## Design Choices: 🎨
@@ -175,7 +175,7 @@ I used [this](https://coolors.co/fefefe-eee1c6-00471b-050100) colour palette fro
 #### Defensive design:
 
 * All forms handle empty input fields by warning the user and not permitting recipe submission.
-* User is given feedback for actions/errors.
+* User is given a message/alert feedback for actions/errors.
 * User is not able to break the site by clicking buttons out of the expected order.
 
 ## Wireframes: 🛠 
@@ -187,12 +187,10 @@ Using MongoDB provides the use of NoSQL features i was able to map out the follo
 
 ### Data Storage Types:
 The types of data that are stored in the MongoDB database.
-- ObjectID
-- String
-- Boolean
-- Object
-- Array
-- Binary
+* ObjectID
+* String
+* Array
+* Binary
 
 Recipes Collection:
 **Title**|**Key in Collection**|**Data Type**
@@ -224,6 +222,7 @@ Password|password|Binary
 
 View the schema templates for the database collections <a href="https://github.com/">here.</a>
 
+
 ## Features: 🎡
 
 ### Features that have been developed:
@@ -233,7 +232,7 @@ View the schema templates for the database collections <a href="https://github.c
 * Users are able to search recipes by recipe's name.
 * Users message feedback when Login.
 * Users message feedback when submit,edit and delete recipes.
-* Recipes descriptions,Preparation time and cooking time.
+* Recipes descriptions, preparation time and cooking time.
 
 ### Features that will be developed in the future:
 
@@ -277,59 +276,59 @@ View the schema templates for the database collections <a href="https://github.c
 
 As I planned and developed this website using Python and mongoDB database, I planned throughly and tested every line of the codes and made sure the codes were functioning properly, looking for errors and adjusting until the code ran without any issues. This process allowed me to learn more in depth on how to work codes with Python, mongoDB database and libraries of Flask and Jinja. 
 
-#### Feature Testing 🎡: 
+### Feature Testing: 🎡 
 
 
-<strong>Register an account,login & logout :</strong>
+<strong>Register an account,login & logout:</strong>
 
-* <strong>Plan</strong> 📝: The user needs to register first to enter the website to have full access of all recipes and be able to submit, edit and delete recipes. User needs email, username and password to register. for password stored in the database it needs to be properly hash for safety feature.
+* <strong>Plan</strong> :📝 The user needs to register first to enter the website to have full access of all recipes and be able to submit, edit and delete recipes. User needs email, username and password to register. for password stored in the database it needs to be properly hash for safety feature.
 
-* <strong>Implementation</strong> 🏭: The user registers email should be in the proper format. Usernames will be check if had a duplicate within the database, using flash message to alert if its already exist. password need to match the repeat password. Upon passing all the required field all will be stored in the database. From the Python Libraries, need to import <strong>session</strong> for the user login and <strong>crypt</strong> for passwords.
+* <strong>Implementation</strong> :🏭 The user registers email should be in the proper format. Usernames will be check if had a duplicate within the database, using flash message to alert if its already exist. password need to match the repeat password. Upon passing all the required field all will be stored in the database. From the Python Libraries, need to import <strong>session</strong> for the user login and <strong>bcrypt</strong> for passwords.
 
-* <strong>Test</strong> 🧪: To test this feature, i had to create several accounts in order to test the registration process as planned, checking the values were passed & stored in the database. Using the registered account Logging in and out succesfully.
+* <strong>Test</strong> :🧪 To test this feature, i had to create several accounts in order to test the registration process as planned, checking the values were passed & stored in the database. Using the registered account, by logging in and out are succesfully.
 
-* <strong>Result</strong> 🏆: The test passed as the created test user accounts stored in the database with encrypted passwords and the user was login and log out into session.
+* <strong>Result</strong> :🏆The test passed as the created test user accounts stored in the database with encrypted passwords and the user can login and log out into session without problems.
 
-* <strong>Verdict</strong> ✅: This test has passed based on the above criteria and notes.
+* <strong>Verdict</strong> :✅ This test has passed based on the above criteria and notes.
 
-<strong>Search menu and recipe's category filter</strong>
+<strong>Search menu and recipe's category filter:</strong>
 
-* <strong>Plan</strong> 📝: The user can use the search menu to search by recipe name or use the Category menu to filter recipes by categories. using flash a message will alert the user if no recipe exist. 
+* <strong>Plan</strong> :📝 The user can use the search menu to search by recipe name or use the category menu to filter recipes by categories. By using flash, a message will alert the user if no recipe exist in the database. 
 
-* <strong>Implementation</strong> 🏭: To implement this feature, i need to use the "Get" and "Post" method to access the database to search for recipes name. To filter categories, i need to use conditional if statements and using "mongo.db.collection.find" to target ({"category_name": "category_name"}). If the search is unsuccesful a flash message will alert the user "No results found."
+* <strong>Implementation</strong> :🏭 To implement this feature, i need to use the "Get" and "Post" method to access the database to search for recipes name. To filter categories, i need to use conditional if statements and using "mongo.db.collection.find" to target ({"category_name": "category_name"}). If the search is unsuccessful, a flash message will alert the user "No results found."
 
-* <strong>Test</strong> 🧪: To test this feature, i searched each recipe either by a letter or by the full name of the recipe.
+* <strong>Test</strong> :🧪 To test this feature, i searched each recipe either by a letter or by the full name of the recipe.
 
-* <strong>Result</strong> 🏆: The test passed for every search made.
+* <strong>Result</strong> :🏆 The test passed for every search made.
 
-* <strong>Verdict</strong> ✅: This test has passed based on the above criteria and notes.
+* <strong>Verdict</strong> :✅ This test has passed based on the above criteria and notes.
 
-<strong>User access to submit,edit and delete recipes.</strong>
+<strong>User access to submit,edit and delete recipes:</strong>
 
-* <strong>Plan</strong> 📝: This feature is largely the main focus in terms of demonstrating CRUD functionality. The user needs to login before they can access the function of submitting, editing and deleting recipes.
+* <strong>Plan</strong> :📝 This feature is largely the main focus in terms of demonstrating CRUD functionality. The user needs to login first before they can access the function of submitting, editing and deleting recipes.
 
-* <strong>Implementation</strong> 🏭: To implement this feature, I need to create 3 routes for each step within the CRUD operation. For Submitting and editing a recipe i need to use the "Get" and "Post" method and using conditional If statements. For deleting recipe i need to use mongo.db.collection.remove. all the 3 routes have a feedback message to inform the user.
+* <strong>Implementation</strong>: 🏭 To implement this feature, I need to create 3 routes for each step within the CRUD operation. For Submitting and editing a recipe i need to use the "Get" and "Post" method and using conditional If statements. For deleting a recipe i need to use mongo.db.collection.remove. All the 3 routes have a feedback message to inform the user.
 
-* <strong>Test</strong> 🧪: To test this feature, i created few dummy recipe which i submitted, edited and deleted.
+* <strong>Test</strong> :🧪 To test this feature, i created few test recipes which i submitted, edited and deleted.
 
-* <strong>Result</strong> 🏆: The test passed for every CRUD operation i did and the database was updated accordingly.
+* <strong>Result</strong> :🏆 The test passed for every CRUD operation i did and the database was updated accordingly.
 
-* <strong>Verdict</strong> ✅: This test has passed based on the above criteria and notes.
+* <strong>Verdict</strong> :✅ This test has passed based on the above criteria and notes.
 
-<strong>Recipe forms for Submitting and Editing</strong>
+<strong>Recipe forms for Submitting and Editing:</strong>
 
-* <strong>Plan</strong> 📝: I needed to create a page with a form that will either submit or edit the recipe, has a table form for ingredients and instruction. prevents to submit the form if the fields are empty.
+* <strong>Plan</strong> :📝 I needed to create a page with a form that will either submit or edit the recipe, has a table form for ingredients and instruction. prevents to submit the form if the fields are empty.
 
-* <strong>Implementation</strong> 🏭: To implement this feature, i used bootstrap form with validation. The table form for ingredients and instruction i used Jquery that will add additional lines for more text space. and Jinja for the required values and names to update the database.
+* <strong>Implementation</strong> :🏭 To implement this feature, i used bootstrap form with validation. The table form for ingredients and instruction, i used Jquery that will add additional lines for more text space and Jinja for the required values and names to update the database.
 
-* <strong>Test</strong> 🧪: To test this feature, i created few dummy recipe which i submitted, edited and deleted.
+* <strong>Test</strong> :🧪 To test this feature, i created few test recipe which i submitted, edited and deleted.
 
-* <strong>Result</strong> 🏆: The test passed for every CRUD operation i did and the database was updated accordingly.
+* <strong>Result</strong> :🏆 The test passed for every CRUD operation i did and the database was updated accordingly.
 
-* <strong>Verdict</strong> ✅: This test has passed based on the above criteria and notes.
+* <strong>Verdict</strong> :✅ This test has passed based on the above criteria and notes.
 
 
-#### Validators and linters
+### Validators and linters:
 
 * The HTML code was validated with: [W3C](https://validator.w3.org/)
 * The CSS code was validated with:[W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
@@ -341,14 +340,14 @@ As I planned and developed this website using Python and mongoDB database, I pla
     * Mozilla Firefox
     * Internet Explorer
 
-#### Further testing:
+### Further testing:
 
 I asked my family and friends for any issues they could find and what the page looked and felt like on their mobile and desktop devices. All the issues they found were fixed and tested again.
 
 
-## Deployment 🚀
+## Deployment: 🚀
 
-Muscle Farm was developed in Visual Studio Code, while git and GitHub were used for version control and Heroku to host the repository.
+Muscle Farm was developed in Visual Studio Code, while Git and GitHub were used for version control and Heroku to host the repository.
 
 ### Deploying Muscle Farm to Heroku:
 
@@ -435,34 +434,33 @@ Python3 app.py
 #### Bugs During Development: 
 
 
-Developing this project with being new to Python,flask and MongoDB, i encountered errors along the way that proved to be somewhat challenging and it took me 
-longer to find soltuions and fixes.
+Developing this project with being new to Python, flask and MongoDB, i encountered errors along the way that proved to be somewhat challenging and it took me 
+longer to find solutions and fixes.
 
-<p>Array Issue for ingredients and instruction</p>
+<strong>Array Issue for ingredients and instruction:</strong>
 
-- <strong>Bug</strong> 🐞: As a used a custom table form the input was not registering on the database as an Array but as an Object.
+* <strong>Bug:</strong> 🐞 I developed a custom table form and the input was not registering on the database as an Array but as an Object.
  
-- <strong>Fix</strong> 🛠: As im new in using Python,flask and MongoDB, The code im missing is request.form.getlist to store the input on the database as an array
+* <strong>Fix:</strong> 🛠 As i'm new in using Python, flask and MongoDB, After a long-time of research, the code that i'm missing is request.form.getlist. The code will store the input on the database as an Array.
 
-- <strong>Verdict</strong> ✅: <p>This bug was squashed and I could continue working on other aspects of the project.</p>
+* <strong>Verdict:</strong> ✅ This bug was squashed and I could continue working on other aspects of the project.
 
 
 ## Credits: 💳
 
 * I used [Stack Overflow](https://stackoverflow.com/) for guides in developing my own codes.
-* I received inspiration for this project from [James Q Quick](https://www.youtube.com/channel/UC-T8W79DN6PBnzomelvqJYw/featured) build a quiz app
 * Image for README.md multi device layouts taken from [techsini](https://techsini.com/multi-mockup/index.php)
 * Image editor online [pixlr](https://pixlr.com/) and [imgonline](https://www.imgonline.com.ua/)
 * Used to make favicon [Favicon Generator](https://www.favicon-generator.org/) 
 * Used for color theme [Coolors.co](https://coolors.co/)
 * Helps my project for height and width [Unicorn Revealer](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB)
-* Sounds Effect download from [freesound.org](https://freesound.org/)
 * for css animation [Animate.css](https://animate.style/) and [CSS Gradient](https://cssgradient.io/)
-* Big Thanks to my mentor from CodeIstitute Mr. Simen Deahlin. You can contact him in [GitHub](https://www.github.com/Eventyret) and [LinkedIn](https://www.linkedin.com/in/simendaehlin/).
+* Big Thanks to Code Institute Tutors
+* [freepik](http://www.freepik.com) images design by xamtiw and rawpixel.com
 
 
 ## Disclaimer:📃
 
-Muscle Farm is developed for educational purposes only, and is not intended for use in any other capacity
+Muscle Farm is developed for educational purposes only 2020, and is not intended for use in any other capacity.
 
 [Back to top ↑](#muscle-farm)
