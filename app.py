@@ -205,7 +205,7 @@ def page_not_found(error):
     Renders an error page with 404 message.
     """
     error_message = str(error)
-    return render_template('pages/404-page.html', error_message=error_message, isFooter=True), 404
+    return render_template('error-pages/404-page.html', error_message=error_message, isFooter=True), 404
 
 
 # 500 page
@@ -215,7 +215,7 @@ def server_error(error):
     Renders an error page with 500 message.
     """
     error_message = str(error)
-    return render_template('pages/500-page.html', error_message=error_message, isFooter=True), 500
+    return render_template('error-pages/500-page.html', error_message=error_message, isFooter=True), 500
 
 
 if __name__ == '__main__':
