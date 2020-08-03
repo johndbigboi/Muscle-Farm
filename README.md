@@ -127,6 +127,7 @@ The design of this website was inspired from [envato market](http://preview.them
 
 #### Fonts:
 
+I used the font [Open Sans](https://fonts.google.com/specimen/Open+Sans?sidebar.open=true&preview.text=Recipe&preview.text_type=custom&query=op)
 
 #### Icons:
 
