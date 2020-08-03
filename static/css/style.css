@@ -1,7 +1,14 @@
-/* * {
-    outline: 1px solid #E91E63 !important;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap');
 
-} */
+html,
+body {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
 
 .bs-slider {
     overflow: hidden;
@@ -218,8 +225,8 @@ h4 {
 
 
 /* Navbar */
-#mainNav {
-
+.navbar {
+    font-family: 'Open Sans', sans-serif;
     background-color: rgba(0, 0, 0, 0.3);
     transition: top 0.3s;
 }
@@ -354,14 +361,19 @@ h4 {
 
 }
 
-/* Register content */
+/* Register,Login and contact forms */
 
-.register .register-form {
+
+.register .register-form,
+.login-form,
+.contact-form {
     padding: 15px;
 
 }
 
-.register-body {
+.register-body,
+.login-body,
+.contact-body {
     background-image: none;
     color: black;
 }
@@ -468,8 +480,6 @@ h4 {
 
 .search-option span {
     display: inline-block;
-    font-family: 'Lora', serif;
-    font-style: italic;
     font-size: 16px;
     color: #ffffff;
     height: 34px;
@@ -1057,6 +1067,18 @@ table.table .form-control.error {
 
 table.table td .add {
     display: none;
+}
+
+/* Contact */
+
+.contact img {
+    height: 40px;
+    width: 40px;
+}
+
+.contact p {
+    margin: 10px;
+    font-size: 1rem;
 }
 
 /* Footer */
