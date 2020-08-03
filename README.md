@@ -456,7 +456,7 @@ longer to find solutions and fixes.
 * Helps my project for height and width [Unicorn Revealer](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB)
 * for css animation [Animate.css](https://animate.style/) and [CSS Gradient](https://cssgradient.io/)
 * Big Thanks to Code Institute Tutors
-* [freepik](http://www.freepik.com) images design by xamtiw and rawpixel.com
+* [freepik](http://www.freepik.com) images design by xamtiw, rawpixel.com, stories
 
 
 ## Disclaimer:📃
