@@ -18,7 +18,7 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    return render_template('Pages/index.html')
+    return render_template('Pages/index.html', isNav=True)
 
 
 # Register Account page
@@ -56,7 +56,7 @@ def register():
         flash('The passwords dont match.')
         return redirect(url_for('register'))
 
-    return render_template('Pages/register.html', categories=mongo.db.categories.find())
+    return render_template('Pages/register.html', categories=mongo.db.categories.find(), isNav=True)
 
 
 # Sign-in/login page
@@ -77,7 +77,7 @@ def login():
             flash("Incorrect Username or Password!")
             return redirect(url_for("login", isFooter=True))
 
-    return render_template('Pages/login.html', isFooter=True)
+    return render_template('Pages/login.html', isFooter=True, isNav=True)
 
 
 # logout route
@@ -85,11 +85,6 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for("index"))
-
-
-@app.route('/about')
-def about():
-    return render_template('Pages/about.html', recipes=mongo.db.recipes.find(), workouts=mongo.db.workouts.find())
 
 
 @app.route('/recipes/<category>')
@@ -193,9 +188,14 @@ def delete_recipe(recipe_id):
     return render_template('Pages/allrecipe.html', isFooter=True)
 
 
-@app.route('/workouts')
-def workouts():
-    return render_template('Pages/workouts.html', categories=mongo.db.breathe.find(), workouts=mongo.db.workouts.find(), isFooter=True)
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == "POST":
+
+        flash("{}, Thank you for getting in touch! We appreciate you contacting us, one of our colleagues will get back in touch with you soon! Have a great day!".format(
+            request.form["name"]))
+
+    return render_template('Pages/contact.html', isFooter=True)
 
 
 # 404 page
