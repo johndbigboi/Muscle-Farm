@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $(".login").attr("id", "mainNav");
     $('[data-toggle="tooltip"]').tooltip();
     var actions = $("table td:last-child").html();
     $('#addingredients li').each(function (i) {
@@ -55,10 +56,13 @@ $(document).ready(function () {
 
 });
 
+
+
 // When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function () {
     var currentScrollPos = window.pageYOffset;
+
     if (prevScrollpos > currentScrollPos) {
         document.getElementById("mainNav").style.top = "0";
     } else {
