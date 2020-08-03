@@ -18,7 +18,7 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html', isNav=True)
+    return render_template('pages/index.html')
 
 
 # Register Account page
@@ -56,7 +56,7 @@ def register():
         flash('The passwords dont match.')
         return redirect(url_for('register'))
 
-    return render_template('register.html', categories=mongo.db.categories.find(), isNav=True)
+    return render_template('pages/register.html', categories=mongo.db.categories.find())
 
 
 # Sign-in/login page
@@ -72,24 +72,24 @@ def login():
             if password == user['password']:
                 session['username'] = request.form.get("username").lower()
                 flash(", great to have you back!")
-                return render_template('allrecipe.html', username=session["username"], isFooter=True)
+                return render_template('pages/allrecipe.html', username=session["username"], isFooter=True)
 
             flash("Incorrect Username or Password!")
             return redirect(url_for("login", isFooter=True))
 
-    return render_template('login.html', isFooter=True, isNav=True)
+    return render_template('pages/login.html', isFooter=True)
 
 
 # logout route
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for("index",  isNav=True))
+    return redirect(url_for("index"))
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html', recipes=mongo.db.recipes.find(), workouts=mongo.db.workouts.find())
+    return render_template('pages/about.html', recipes=mongo.db.recipes.find(), workouts=mongo.db.workouts.find())
 
 
 @app.route('/recipes/<category>')
@@ -102,7 +102,7 @@ def recipes(category):
     else:
         recipe = mongo.db.recipes.find()
 
-    return render_template('allrecipe.html', recipe=recipe, category_title=category, recipes=mongo.db.recipes.find(), isFooter=True)
+    return render_template('pages/allrecipe.html', recipe=recipe, category_title=category, recipes=mongo.db.recipes.find(), isFooter=True)
 
 
 # ---- SEARCH ----- #
@@ -114,10 +114,10 @@ def search():
     result_count = mongo.db.recipes.find(
         {"$text": {"$search": search}}).count()
     if result_count > 0:
-        return render_template("search.html", results=results, search=search, isFooter=True)
+        return render_template("pages/search.html", results=results, search=search, isFooter=True)
     else:
         flash("No results found.")
-        return render_template("search.html", results=results, search=search, isFooter=True)
+        return render_template("pages/search.html", results=results, search=search, isFooter=True)
 
 
 @app.route('/recipe/add', methods=['GET', 'POST'])
@@ -145,15 +145,15 @@ def add_recipe():
         }
         flash("Thank you for submitting your recipe!")
         mongo.db.recipes.insert_one(recipe)
-        return render_template('allrecipe.html', isFooter=True)
+        return render_template('pages/allrecipe.html', isFooter=True)
 
-    return render_template('addrecipe.html', categories=mongo.db.categories.find(), isFooter=True)
+    return render_template('pages/addrecipe.html', categories=mongo.db.categories.find(), isFooter=True)
 
 
 @app.route('/recipe/<recipe_id>')
 def get_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("recipe.html", recipe=recipe, isFooter=True)
+    return render_template("pages/recipe.html", recipe=recipe, isFooter=True)
 
 
 @app.route('/recipe/edit/<recipe_id>', methods=['GET', 'POST'])
@@ -178,11 +178,11 @@ def update_recipe(recipe_id):
         })
 
         flash("Succesfully updated the recipe!")
-        return render_template('allrecipe.html', isFooter=True)
+        return render_template('pages/allrecipe.html', isFooter=True)
 
     all_categories = mongo.db.categories.find()
     prerecipes = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
-    return render_template('editrecipe.html',
+    return render_template('pages/editrecipe.html',
                            recipes=prerecipes, categories=all_categories, isFooter=True)  # to do a find on the categories table.
 
 
@@ -190,12 +190,32 @@ def update_recipe(recipe_id):
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     flash("Succesfully deleted the recipe!")
-    return render_template('allrecipe.html', isFooter=True)
+    return render_template('pages/allrecipe.html', isFooter=True)
 
 
 @app.route('/workouts')
 def workouts():
-    return render_template('workouts.html', categories=mongo.db.breathe.find(), workouts=mongo.db.workouts.find(), isFooter=True)
+    return render_template('pages/workouts.html', categories=mongo.db.breathe.find(), workouts=mongo.db.workouts.find(), isFooter=True)
+
+
+# 404 page
+@app.errorhandler(404)
+def page_not_found(error):
+    """
+    Renders an error page with 404 message.
+    """
+    error_message = str(error)
+    return render_template('pages/404-page.html', error_message=error_message, isFooter=True), 404
+
+
+# 500 page
+@app.errorhandler(500)
+def server_error(error):
+    """
+    Renders an error page with 500 message.
+    """
+    error_message = str(error)
+    return render_template('pages/500-page.html', error_message=error_message, isFooter=True), 500
 
 
 if __name__ == '__main__':
