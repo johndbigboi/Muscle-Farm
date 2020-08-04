@@ -10,6 +10,154 @@ body {
 }
 
 
+h4 {
+    text-align: center;
+}
+
+
+/* Navbar */
+
+.navbar {
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: top 0.3s;
+}
+
+.navbar a {
+    color: #eee1c6;
+}
+
+.navbar img {
+    width: 30px;
+    height: 30px;
+}
+
+.navbar-light .navbar-brand .navbar-nav {
+    color: white;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgba(0, 0, 0, .9);
+    border-color: rgba(0, 0, 0, .1);
+}
+
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link {
+    color: rgba(0, 0, 0, .9);
+}
+
+.navbar-toggler {
+    color: #eee1c6;
+}
+
+@media(max-width: 768px) {
+    .navbar>.container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .navbar-collapse {
+        background-color: #00471b;
+    }
+}
+
+
+/*  Landing Hero */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 45rem;
+    padding: 14rem 0;
+    background: url("../images/board.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.hero-title {
+    background-color: rgba(0, 141, 27, 0.1);
+    color: rgba(0, 141, 27, 0.1);
+    padding: 20px;
+    border: 8px solid;
+}
+
+.hero-title h1 {
+    font-size: 2.5rem;
+    letter-spacing: 0.8rem;
+    background: rgb(15, 65, 60);
+    background: linear-gradient(0deg, rgba(15, 65, 60, 1) 15%, rgba(54, 236, 217, 1) 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    border-top: 5px solid #eee1c6;
+    border-bottom: 5px solid #eee1c6;
+}
+
+.hero-title h2 {
+    max-width: 20rem;
+    font-size: 1rem;
+    color: #eee1c6;
+}
+
+.hero-title img {
+    height: 150px;
+    width: 150px;
+}
+
+.hero-title a {
+    color: #fff;
+}
+
+.main {
+    height: 100vh;
+}
+
+/* Media queries for Hero */
+
+@media (max-width: 400px) {
+
+    .hero-title .form-buttons {
+        width: 100%;
+    }
+}
+
+
+/* Register,Login and contact forms */
+
+.register .register-form,
+.login-form,
+.contact-form {
+    padding: 15px;
+
+}
+
+.register-body,
+.login-body,
+.contact-body {
+    background-image: none;
+    color: black;
+}
+
+.register-body form {
+    padding: 20px;
+}
+
+.register-body form .form-control {
+    padding: 20px;
+    border: 1px solid #00471b;
+}
+
+
+/* allRecipe content */
+
+/* carousel */
+
 .bs-slider {
     overflow: hidden;
     max-height: 580px;
@@ -37,7 +185,8 @@ body {
 }
 
 
-/*---------- SLIDE CAPTION ----------*/
+/* Carousel slide caption*/
+
 .slide_style_left {
     text-align: left !important;
 }
@@ -138,14 +287,7 @@ body {
 
 }
 
-
-
-
-
-
-/*------------------------------------------------------*/
-/* RESPONSIVE
-/*------------------------------------------------------*/
+/* Media Queries for Carousel */
 
 @media (max-width: 991px) {
     .slide-text h1 {
@@ -161,7 +303,6 @@ body {
 }
 
 
-/*---------- MEDIA 480px ----------*/
 @media (max-width: 768px) {
     .slide-text {
         padding: 10px 50px;
@@ -178,10 +319,6 @@ body {
         line-height: 20px;
         margin-bottom: 20px;
     }
-
-    /* .control-round .carousel-control {
-        display: none;
-    } */
 
 }
 
@@ -215,182 +352,6 @@ body {
 
 }
 
-h4 {
-    text-align: center;
-}
-
-.content {
-    background-color: #eee1c6;
-}
-
-
-/* Navbar */
-.navbar {
-    font-family: 'Open Sans', sans-serif;
-    background-color: rgba(0, 0, 0, 0.3);
-    transition: top 0.3s;
-}
-
-.navbar a {
-    color: #eee1c6;
-}
-
-.navbar img {
-    width: 30px;
-    height: 30px;
-}
-
-.navbar-light .navbar-brand .navbar-nav {
-    color: white;
-}
-
-.navbar-light .navbar-toggler {
-    color: rgba(0, 0, 0, .9);
-    border-color: rgba(0, 0, 0, .1);
-}
-
-.navbar-light .navbar-nav .active>.nav-link,
-.navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .nav-link.show,
-.navbar-light .navbar-nav .show>.nav-link {
-    color: rgba(0, 0, 0, .9);
-}
-
-.navbar-toggler {
-    color: #eee1c6;
-}
-
-@media(max-width: 768px) {
-    .navbar>.container {
-        max-width: 100%;
-        padding: 0;
-    }
-
-    .navbar-collapse {
-        background-color: #00471b;
-        /*replace with desired color*/
-    }
-}
-
-
-/*  Landing Hero */
-
-.hero {
-    position: relative;
-    width: 100%;
-    /*  height: 40vh; */
-    height: 100%;
-    min-height: 45rem;
-    padding: 14rem 0;
-    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), 
-                                url("../images/chuttersnap-eHGCUD180xE-unsplash.jpg"); */
-    background: url("../images/board.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
-    overflow: hidden;
-}
-
-.hero-title {
-    background-color: rgba(0, 141, 27, 0.1);
-    color: rgba(0, 141, 27, 0.1);
-    padding: 20px;
-    border: 8px solid;
-}
-
-.hero-title h1 {
-    font-size: 2.5rem;
-    /* line-height: 2.5rem; */
-    letter-spacing: 0.8rem;
-    /* background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 25%, rgba(238, 225, 200, 1) 48%); */
-    background: rgb(15, 65, 60);
-    background: linear-gradient(0deg, rgba(15, 65, 60, 1) 15%, rgba(54, 236, 217, 1) 100%);
-    /* background: rgb(15, 65, 60);
-    background: linear-gradient(0deg, rgba(15, 65, 60, 1) 24%, rgba(238, 225, 200, 1) 100%); */
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    border-top: 5px solid #eee1c6;
-    border-bottom: 5px solid #eee1c6;
-}
-
-.hero-title h2 {
-    max-width: 20rem;
-    font-size: 1rem;
-    color: #eee1c6;
-}
-
-.hero-title img {
-    height: 150px;
-    width: 150px;
-}
-
-.hero-title a {
-    color: #fff;
-}
-
-/* @media (min-width: 768px) {
-    .hero h1 {
-        font-size: 4rem;
-        line-height: 4rem;
-    }
-}
-
-@media (min-width: 992px) {
-    .hero {
-        height: 100vh;
-        padding: 0;
-    }
-
-    .hero h1 {
-        font-size: 6.5rem;
-        line-height: 6.5rem;
-        letter-spacing: 0.8rem;
-    }
-
-    .hero h2 {
-        max-width: 30rem;
-        font-size: 1.25rem;
-    }
-} */
-
-.main {
-    height: 100vh;
-
-}
-
-/* Register,Login and contact forms */
-
-
-.register .register-form,
-.login-form,
-.contact-form {
-    padding: 15px;
-
-}
-
-.register-body,
-.login-body,
-.contact-body {
-    background-image: none;
-    color: black;
-}
-
-.register-body form {
-    padding: 20px;
-}
-
-.register-body form .form-control {
-    padding: 20px;
-    border: 1px solid #00471b;
-}
-
-
-/* allRecipe content */
-
-
 #hero-recipe {
     width: 100%;
     height: 35vh;
@@ -404,12 +365,9 @@ h4 {
 }
 
 #menu {
-
-    /* color: rgba(0, 141, 27, 0.2);
-    border: 4px solid; */
     padding: 10px;
     margin-bottom: 1rem;
-    /*  width: 70%; */
+
 }
 
 .border-gradient {
@@ -428,12 +386,6 @@ h4 {
     overflow: hidden;
 
 }
-
-
-/* .search-bar ul li {
-    padding: 5px;
-    border-right: 1px solid #67b238;
-} */
 
 .search-bar .search-box-home {
     display: inline-block;
@@ -518,6 +470,7 @@ h4 {
     transform: rotate(20deg);
 }
 
+/*  Media Queries for search bar */
 
 @media (max-width: 768px) {
 
@@ -595,20 +548,16 @@ h4 {
 }
 
 #menu a {
-
     text-decoration: none;
     color: #000000;
 }
 
 #menu a:hover {
     border-radius: 5px;
-    /* background-color: #00471b; */
     background: rgb(0, 71, 27, 0.9);
-    /* border: 2px solid #eee1c6; */
     color: white;
     margin: 15px;
-    /* padding-left: 5px;
-    padding-right: 30px; */
+    padding-right: 30px;
     padding: 2px 20px;
     font-size: 1rem;
     -webkit-transition: background 0.5s ease-in-out,
@@ -628,15 +577,13 @@ h4 {
 .menu-links {
     margin: 15px;
     padding: 2px 20px;
-    /* padding-left: 5px;
-    padding-right: 30px; */
+    padding-right: 30px;
     font-size: 1rem;
     color: black;
 
 }
 
 .category-title {
-
     background-color: rgba(0, 141, 27, 0.1);
     color: rgba(0, 141, 27, 0.1);
     margin: 1rem;
@@ -658,23 +605,14 @@ h4 {
     text-align: left;
     margin: auto;
     padding: 10px 30px;
-    /* border: 2px solid #00471b; */
-    /* margin: 15px 0 15px 30px; */
     background: rgb(15, 65, 60);
     background: linear-gradient(0deg, rgba(15, 65, 60, 1) 15%, rgba(54, 236, 217, 1) 100%);
-    /* background: linear-gradient(0deg, rgba(15, 65, 60, 1) 24%, rgba(238, 225, 200, 1) 100%); */
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-
-
-    /* background-color: rgba(0, 141, 27, 0.1);
-    color: rgba(0, 141, 27, 0.1);
-    padding: 20px;
-    border: 8px solid; */
 }
 
-
+/* Buttons color gradient */
 
 .btngradient {
     background: rgb(238, 225, 198);
@@ -705,17 +643,15 @@ h4 {
     color: black;
 }
 
-.card {
-    /* height: 50vh; */
-    border-radius: calc(1rem - 1px);
+/* Recipe Card */
 
+.card {
+    border-radius: calc(1rem - 1px);
     margin: 10px;
     box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4), 0 10px 20px 0 rgba(0, 0, 0, 0.25);
     text-decoration: none;
     color: black;
     border: 1px solid #00471b;
-
-
     -webkit-box-shadow: 0px 0px 13px 4px rgba(0, 71, 27, 0.65);
     -moz-box-shadow: 0px 0px 13px 4px rgba(0, 71, 27, 0.65);
     box-shadow: 0px 0px 13px 4px rgba(0, 71, 27, 0.65);
@@ -798,15 +734,6 @@ h4 {
 /* Recipe */
 
 .recipe-card {
-    /*  margin-top: 2.5rem;
-    font-size: 1rem;
-    padding: 1rem;
-    font-size: 1rem;
-    border-radius: 15px;
-    background-color: white;
-    margin: 10px;
-    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4),
-        0 10px 20px 0 rgba(0, 0, 0, 0.25); */
     text-decoration: none;
     color: black;
 }
@@ -878,62 +805,8 @@ h4 {
     background-color: #00471b;
 }
 
-/* Dashboard */
+/* recipe Form for add and Edit */
 
-.recipes {
-    padding: 0;
-    margin: 0;
-}
-
-.workouts {
-
-    margin: 0;
-}
-
-.recipes img {
-    height: 500px;
-    width: 100%;
-}
-
-.workouts img {
-    height: 250px;
-    width: 100%;
-}
-
-.dashboard-item {
-    display: block;
-    position: relative;
-    overflow: hidden;
-}
-
-
-.dashboard-item .caption {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(33, 37, 41, .2);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-}
-
-.dashboard-item .caption .caption-content {
-    color: #fff;
-    margin: auto 2rem 2rem;
-}
-
-@media (min-width: 992px) {
-    .dashboard-item img {
-        transition: -webkit-clip-path .25s ease-out;
-        transition: clip-path .25s ease-out;
-        transition: clip-path .25s ease-out, -webkit-clip-path .25s ease-out;
-        -webkit-clip-path: inset(-1px);
-        clip-path: inset(-1px);
-    }
-}
-
-/* recipe from */
 .add-recipe,
 .edit-recipe {
     background-image: url(../images/bg1.jpg);
@@ -1085,10 +958,7 @@ table.table td .add {
 
 footer.footer {
     padding-top: 2rem;
-
     background-color: rgba(45, 46, 41, 1);
-    /*  background-color: rgba(7, 7, 7, 1); */
-    /* height: 10vh; */
 }
 
 footer.footer .social-link {
@@ -1114,8 +984,7 @@ footer i {
     -ms-transform: scale(1.5);
     transform: scale(1.5);
     color: #4267B2;
-    /* line-height: 50px; */
-    /* text-shadow: 1px 1px 2px #FFA000; */
+
 }
 
 .hover ul li:hover .github i {
@@ -1131,8 +1000,6 @@ footer i {
     right: 15px;
     bottom: 15px;
     display: inline;
-    /* width: 50px;
-    height: 50px; */
     text-align: center;
     color: #fff;
     background-color: rgb(0, 141, 27, 0.5);
