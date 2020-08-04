@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $(".login").attr("id", "mainNav");
+    $(".hero").attr("id", "mainNav");
     $('[data-toggle="tooltip"]').tooltip();
     var actions = $("table td:last-child").html();
     $('#addingredients li').each(function (i) {
