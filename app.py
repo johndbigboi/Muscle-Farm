@@ -56,7 +56,7 @@ def register():
 
             session["username"] = request.form.get("username").lower()
             flash(", thank you for registering! you can now access all the recipes and you can submit your favourite recipe! enjoy!")
-            return render_template('allrecipe.html', username=session["username"])
+            return render_template('pages/allrecipe.html', username=session["username"])
 
         flash('The passwords dont match.')
         return redirect(url_for('register'))
