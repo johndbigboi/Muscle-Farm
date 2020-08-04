@@ -345,6 +345,8 @@ As I planned and developed this website using Python and mongoDB database, I pla
 
 I asked my family and friends for any issues they could find and what the page looked and felt like on their mobile and desktop devices. All the issues they found were fixed and tested again.
 
+Javascript window.onscroll showing error on browser console in index.html, register.html and login.html as the page doesnt have any navbar. The solution i made is to add an id for every active page using Jquery. 
+
 
 ## Deployment: 🚀
 
