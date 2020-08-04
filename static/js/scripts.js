@@ -1,8 +1,14 @@
 $(document).ready(function () {
+
+    // fix for window.onscroll bug
     $(".login").attr("id", "mainNav");
     $(".hero").attr("id", "mainNav");
+
+    // delete tooltip for table
     $('[data-toggle="tooltip"]').tooltip();
     var actions = $("table td:last-child").html();
+
+    // add attr name for table
     $('#addingredients li').each(function (i) {
         $(this).find('input').eq(0).attr("name", i++);
     });

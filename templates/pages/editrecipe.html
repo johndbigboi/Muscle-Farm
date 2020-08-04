@@ -10,15 +10,14 @@
                     <h4 class="recipe-form-title btngradient">Edit Recipe</h4>
                     <div class="col-md-12 mb-3">
                         <label for="recipename">Recipe Name</label>
-                        <input name="recipe_name" id="recipe_name" type="text" class="form-control" id="recipename"
+                        <input name="recipe_name" type="text" class="form-control" id="recipename"
                             aria-describedby="Recipe Name" value="{{recipes.recipe_name}}" required>
                     </div>
                     <div class="col-md-12 mb-3">
-
-                        <label for="category_name"">Category</label>
+                        <label for="categoryname"">Category</label>
                         <select class=" form-control" value="{{recipes.category_name}}" name="category_name"
-                            id="category_name" required>
-                            <option value="" disabled selected>Choose Categories</option>
+                            id="categoryname" required>
+                            <option value="{{recipes.category}}" disabled selected>Choose Categories</option>
                             {% for cat in categories %}
                             <option>{{cat.category_name}}</option>
                             {% endfor %}
@@ -33,11 +32,10 @@
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="image">Image URL</label>
-                        <input name="image" id="image" type="url" class="form-control" id="image"
-                            value="{{recipes.image}}" aria-describedby="image url" required>
+                        <input name="image" type="url" class="form-control" id="image" value="{{recipes.image}}"
+                            aria-describedby="image url" required>
                         <small class="form-text text-muted">Use a valid URL</small>
                     </div>
-
                     <div class="form-row justify-content-around">
                         <div class="col-sm-12 col-md-5">
                             <div class="form-group">
@@ -48,7 +46,6 @@
                                 <small class="form-text text-muted">Ex: 10 mins</small>
                             </div>
                         </div>
-
                         <div class="col-sm-12 col-md-5">
                             <div class="form-group">
                                 <label for="cooks">Cooking Time</label>
@@ -63,7 +60,6 @@
             </div>
         </div>
         <!-- Tables -->
-
         <div class="card recipe-form-tables">
             <div class="table-title">
                 <div class="row">
@@ -174,8 +170,10 @@
         <div class="card">
             <div class="row form-buttons">
                 <div class="col-sm-12 col-md-6 form-btn">
-                    <button class="btn btn-block btngradient" type="submit">Update
-                        Recipe</button>
+
+                    <button class="btn btn-block btngradient" type="submit">
+                        <img src="/static/images/add2.png" class="img-fluid" alt="menu">
+                        Update Recipe</button>
                 </div>
                 <div class="col-sm-12 col-md-6 form-btn">
                     <a class="btn btn-block btn-recipe border-gradient-green border-gradient"
@@ -186,5 +184,5 @@
         </div>
     </form>
 </div>
-
+<!-- End Edit Forms -->
 {% endblock %}

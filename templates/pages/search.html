@@ -2,7 +2,6 @@
 
 {% block content %}
 <!-- Jumbotron -->
-
 <div class="jumbotron jumbotron-fluid" id="recipe-view">
     <div class="recipe-view-content d-flex text-center">
 
@@ -20,10 +19,9 @@
 
     </div>
 </div>
-<!-- Jumbotron -->
+<!-- End Jumbotron -->
 
 <!--search-->
-
 <div class="search-box-menu" id="menu">
     <div class="wrapper-search-bar">
         <div class="container border-gradient border-gradient-green">
@@ -36,7 +34,7 @@
                                     <span>Search</span>
                                     <label for="search-slider">
                                         <input type="search" id="search-slider" placeholder="keyword" name="search"
-                                            id="search" type="text">
+                                            type="text">
                                         <button type="submit" name="search" value="search">
                                             <i class="fa fa-search"></i></button>
                                     </label>
@@ -48,20 +46,17 @@
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-7 col-sm-12">
-
                         <ul class="list-inline text-center menu-item">
                             <li class="list-inline-item">
                                 <a class="menu-links menu-item-border"
                                     href="{{ url_for('recipes', category='All Recipe') }}">All
                                     Recipe</a>
-
                             </li>
                             <li class="list-inline-item">
                                 <a class="menu-links menu-item-border"
                                     href="{{ url_for('recipes', category='Pre Workout Meal') }}">Pre
                                     Workout
                                     Recipe</a>
-
                             </li>
                             <li class="list-inline-item">
                                 <a class="menu-links" href="{{ url_for('recipes', category='Post Workout Meal') }}">Post
@@ -75,23 +70,17 @@
         </div>
     </div>
 </div>
-<!--search-->
+<!-- End search-->
 
-
-
-<!--- allrecipes -->
-
+<!--- Recipe section -->
 <div class="container mb-5" id="allrecipe">
     <div class="search-title">Search Results:</div>
     <div class="category-title">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for message in messages %}
-
         <h2>{{ message }}</h2>
-
         {% endfor %}
-
         {% endif %}
         {% endwith %}
     </div>
@@ -119,5 +108,5 @@
         {% endfor %}
     </div>
 </div>
-<!-- Recipe section -->
+<!-- End Recipe section -->
 {% endblock %}

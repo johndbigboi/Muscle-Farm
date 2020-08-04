@@ -1,12 +1,11 @@
 {% extends 'layout/base.html' %}
 {% block content %}
 
-<header class="hero main">
+<div class="hero main">
     <div class="container d-flex h-100 align-items-center">
         <div class="hero-title mx-auto">
-            <!-- Login Form -->
 
-
+            <!-- Register Form -->
             <div class="register mx-auto">
                 <div class="card register-form">
                     <div class="register-body">
@@ -15,29 +14,26 @@
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" name="email" id="email" class="form-control"
-                                    placeholder="your@email.com" required autofocus value="{{ request.form.email }}"
-                                    autocomplete="off">
+                                    placeholder="your@email.com" value="{{ request.form.email }}" required autofocus>
                             </div>
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="username" name="username" id="username" type="text" minlength="1"
-                                    maxlength="10" pattern="^[a-zA-Z0-9]{1,10}$" class="form-control"
-                                    placeholder="Enter username" required value="{{ request.form.username }}"
-                                    autocomplete="off">
+                                <input name="username" id="username" type="text" pattern=".{1,10}" class="form-control"
+                                    placeholder="Enter username" value="{{ request.form.username }}" required>
                                 <small class="form-text text-muted">Max 10 characters</small>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" id="password" minlength="1" maxlength="8"
-                                    class="form-control" placeholder="maximum 8 characters" autocomplete="off" required
-                                    value="{{ request.form.password }}">
+                                <input type="password" name="password" id="password" pattern=".{1,10}"
+                                    class="form-control" placeholder="maximum 8 characters"
+                                    value="{{ request.form.password }}" required>
 
                             </div>
                             <div class="form-group">
-                                <label for="repeat_password">Repeat Password</label>
-                                <input type="password" name="repeat_password" id="repeat_password" minlength="1"
-                                    maxlength="8" class="form-control" placeholder="maximum 8 characters"
-                                    autocomplete="off" required value="{{ request.form.repeat_password }}" required>
+                                <label for="repeatpassword">Repeat Password</label>
+                                <input type="password" name="repeat_password" id="repeatpassword" pattern=".{1,10}"
+                                    class="form-control" placeholder="maximum 8 characters"
+                                    value="{{ request.form.repeat_password }}" required>
 
                             </div>
                             {% for message in get_flashed_messages() %}
@@ -50,18 +46,16 @@
                                     Log in</a>
                             </p>
                             <a class="btn btn-recipe border-gradient-green border-gradient float-right"
-                                href="{{ url_for('index') }}" role=" button" aria-expanded="false">
+                                href="{{ url_for('index') }}" role="button" aria-expanded="false">
                                 Close</a>
                         </form>
                     </div>
                 </div>
             </div>
+            <!-- End Register Form -->
 
-
-            <!-- Login Form -->
         </div>
     </div>
-</header>
-
+</div>
 
 {% endblock %}
