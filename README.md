@@ -35,7 +35,7 @@ Thank you for visiting my Github page. I hope you enjoy reading about the projec
     * [Features](#features)
     * [Technologies Used](#technologies-used)
         * [Languages](#languages)
-        * [Libraries & Tools](#libraries--tools)
+        * [Libraries & Tools](#libraries-tools)
     * [Planning and Testing](#planning-and-testing)
         * [Feature Testing](#feature-testing)
         * [Further testing](#further-testing)
@@ -185,7 +185,7 @@ I used [this](https://coolors.co/fefefe-eee1c6-00471b-050100) colour palette fro
 
 ## Wireframes: 🛠 
 
-All wireframes were designed and produced using [Balsamiq Mockups 3](https://balsamiq.com/). link to my [Wireframes]().
+All wireframes were designed and produced using [Balsamiq Mockups 3](https://balsamiq.com/). link to my [Wireframes](https://github.com/johndbigboi/Muscle-Farm/blob/master/wireframes/wireframe.png).
 
 ## Database Design: ⚙️
 Using MongoDB provides the use of NoSQL features i was able to map out the following collections.
